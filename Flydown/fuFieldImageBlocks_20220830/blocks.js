@@ -287,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-	var myFieldImageBlocks = {};
+	var myFieldImageBlocks = myFieldImageBlocks||{};
 
 	myFieldImageBlocks.eventparam = function (opt_image, opt_blocksXML, opt_validator) {
 		this.opt_image_ = opt_image;
