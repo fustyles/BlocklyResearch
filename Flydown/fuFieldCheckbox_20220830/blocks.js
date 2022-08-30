@@ -40,7 +40,7 @@ Blockly.Blocks["test"] = {
 
 document.addEventListener('DOMContentLoaded', function() {
 		
-	var fuCheckboxField = {};
+	var fuCheckboxField = fuCheckboxField||{};
 
 	fuCheckboxField.CheckboxField = function(text, options, id, opt_validate) {
 	  fuCheckboxField.CheckboxField.superClass_.constructor.call(this, text, opt_validate);
