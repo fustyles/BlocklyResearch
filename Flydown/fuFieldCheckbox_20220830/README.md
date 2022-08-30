@@ -1,1 +1,1 @@
-<img src="https://fustyles.github.io/webduino/LinkIt7697/test_myFieldFilter/img/fuFieldCheckbox.png">
+<img src="https://fustyles.github.io/webduino/LinkIt7697/test_myFieldCheckbox/img/fuCheckboxField.png">
