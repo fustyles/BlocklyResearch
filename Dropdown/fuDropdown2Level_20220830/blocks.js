@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileoverview Multi Dropdown 2 level.
+ * @fileoverview Multi Dropdown 2 levels.
  * @author https://www.facebook.com/francefu/
  * @Update 11/28/2021 09:30 (Taiwan Standard Time)
  */
