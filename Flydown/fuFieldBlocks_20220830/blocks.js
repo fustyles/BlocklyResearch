@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-	var myFieldBlocks = {};
+	var myFieldBlocks = myFieldBlocks||{};
 
 	myFieldBlocks.eventparam = function (opt_value, opt_color, opt_workspace, opt_blocksXML, opt_fieldID, opt_validator) {
 		opt_value = this.doClassValidation_(opt_value);
