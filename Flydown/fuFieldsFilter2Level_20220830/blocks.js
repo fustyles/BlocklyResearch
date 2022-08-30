@@ -1,11 +1,18 @@
 /**
  * @license
+ * Copyright 2013 Google LLC
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+
+/**
+ * @license
  * Copyright 2021 Taiwan (ChungYi Fu)
  * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
- * @fileoverview my Field Filter.
+ * @fileoverview Field Filter.
  * @author https://www.facebook.com/francefu/
  * @Update 12/20/2021 00:00 (Taiwan Standard Time)
  */
@@ -114,7 +121,54 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-		
+	
+	Blockly.Flyout.prototype.updateDisplay_=function(){
+		var a=this.containerVisible_?this.isVisible():!1;
+		this.svgGroup_.style.display=a?"block":"none";
+		if (this.workspace_.scrollbar)
+			this.workspace_.scrollbar.setContainerVisible(a)
+	};
+
+	Blockly.Flyout.prototype.clearOldBlocks_=function(){
+		for(var a=this.workspace_.getTopBlocks(!1),b=0,c;c=a[b];b++)
+			this.blockIsRecyclable_(c)?this.recycleBlock_(c):c.dispose(!1,!1);
+		for(a=0;a<this.mats_.length;a++)
+			if(b=this.mats_[a])(0,Blockly.Tooltip.unbindMouseEvents)(b),(0,Blockly.utils.dom.removeNode)(b);
+		for(a=this.mats_.length=0;b=this.buttons_[a];a++)
+			b.dispose();
+		this.buttons_.length=0;
+		if (this.workspace_.getPotentialVariableMap())
+			this.workspace_.getPotentialVariableMap().clear()
+	};
+	
+	
+	
+	
+
+	
+	Blockly.Flyout.prototype.updateDisplay_=function(){
+		var a=this.containerVisible_?this.isVisible():!1;
+		this.svgGroup_.style.display=a?"block":"none";
+		if (this.workspace_.scrollbar)
+			this.workspace_.scrollbar.setContainerVisible(a)
+	};
+
+	Blockly.Flyout.prototype.clearOldBlocks_=function(){
+		for(var a=this.workspace_.getTopBlocks(!1),b=0,c;c=a[b];b++)
+			this.blockIsRecyclable_(c)?this.recycleBlock_(c):c.dispose(!1,!1);
+		for(a=0;a<this.mats_.length;a++)
+			if(b=this.mats_[a])(0,Blockly.Tooltip.unbindMouseEvents)(b),(0,Blockly.utils.dom.removeNode)(b);
+		for(a=this.mats_.length=0;b=this.buttons_[a];a++)
+			b.dispose();
+		this.buttons_.length=0;
+		if (this.workspace_.getPotentialVariableMap())
+			this.workspace_.getPotentialVariableMap().clear()
+	};
+	
+	
+	
+	
+
 	var fuFieldsFilter2Level = fuFieldsFilter2Level||{};
 
 	fuFieldsFilter2Level.FieldFilter = function(text, options, opt_validate) {
