@@ -115,7 +115,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 		
-	var fuFieldsFilter2Level = {};
+	var fuFieldsFilter2Level = fuFieldsFilter2Level||{};
 
 	fuFieldsFilter2Level.FieldFilter = function(text, options, opt_validate) {
 	  fuFieldsFilter2Level.FieldFilter.superClass_.constructor.call(this, text, opt_validate);
