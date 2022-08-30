@@ -79,7 +79,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
-	var fuFieldsFilter = {};
+	var fuFieldsFilter = fuFieldsFilter||{};
 
 	fuFieldsFilter.FieldFilter = function(text, options, opt_validate) {
 	  fuFieldsFilter.FieldFilter.superClass_.constructor.call(this, text, opt_validate);
