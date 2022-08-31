@@ -14,21 +14,18 @@
 /**
  * @fileoverview Angle input field.
  * @author https://www.facebook.com/francefu/
- * @Update 8/28/2022 22:00 (Taiwan Standard Time)
+ * @Update 8/31/2022 00:00 (Taiwan Standard Time)
  */
 
 /*
 Blockly.Blocks["test"] = {
 	init:  function() {
-		var field = new fuFieldAngle(30);
-		field.options = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360];
+		var options = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360];
+		
 		this.appendDummyInput()
-			.appendField(field, "test");
+			.appendField(new fuFieldAngle(30, options), "angle");
 			
-		this.setInputsInline(true);		
-		this.setPreviousStatement(true, null);
-		this.setNextStatement(true, null);
-		this.setColour(100);
+		//etc...
 	}
 }
 */
@@ -80,9 +77,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	   *     https://developers.google.com/blockly/guides/create-custom-blocks/fields/built-in-fields/angle#creation}
 	   *     for a list of properties this parameter supports.
 	   */
-	  constructor(opt_value, opt_validator, opt_config) {
+	  constructor(opt_value, opt_options ,opt_validator, opt_config) {
 		super(Blockly.Field.SKIP_SETUP);
-
+		
+		
+		this.options = opt_options;
+		
 		/**
 		 * Should the angle increase as the angle picker is moved clockwise (true)
 		 * or counterclockwise (false)
@@ -670,12 +670,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	Blockly.Blocks["test"] = {
 		init:  function() {
-		
-			var field = new fuFieldAngle(30);
-			field.options = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360];
+			var options = [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 360];
 			
 			this.appendDummyInput()
-				.appendField(field, "test");
+				.appendField(new fuFieldAngle(30, options), "angle");
 			this.setInputsInline(true);		
 			this.setPreviousStatement(true, null);
 			this.setNextStatement(true, null);
