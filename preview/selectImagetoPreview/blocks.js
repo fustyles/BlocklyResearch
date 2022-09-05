@@ -1,3 +1,15 @@
+/**
+ * @license
+ * Copyright 2022 Taiwan (ChungYi Fu)
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/**
+ * @fileoverview Image preview
+ * @author https://www.facebook.com/francefu/
+ * @Update 9/5/2022 20:00 (Taiwan Standard Time)
+ */
+
 Blockly.Blocks['test'] = {
   init: function() {
 	  
