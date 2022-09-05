@@ -5,7 +5,7 @@
  */
 
 /**
- * @fileoverview Image preview
+ * @fileoverview select an image then show the image preview in the block
  * @author https://www.facebook.com/francefu/
  * @Update 9/5/2022 20:00 (Taiwan Standard Time)
  */
