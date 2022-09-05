@@ -43,8 +43,7 @@ Blockly.Blocks['test'] = {
 			document.body.appendChild(canvas1);
 			canvas1.parentNode.removeChild(canvas1);
 			document.body.appendChild(canvas);
-			canvas.parentNode.removeChild(canvas);
-			file.parentNode.removeChild(file);			
+			canvas.parentNode.removeChild(canvas);		
 		}
 		
 		
@@ -69,10 +68,12 @@ Blockly.Blocks['test'] = {
 	this.appendDummyInput()
 		.appendField(field);
 		
-    this.appendDummyInput("previewImage");
+    this.appendDummyInput("previewImage")
+		.appendField("", "icon");
     this.appendDummyInput()
 		.appendField(new Blockly.FieldLabelSerializable(""), "previewImageBase64String");
-	this.getField("previewImageBase64String").setValidator(this.previewImageChanged);	
+	this.getField("previewImageBase64String").setValidator(this.previewImageChanged);
+	this.getField("previewImageBase64String").setVisible(false);	
 		
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
