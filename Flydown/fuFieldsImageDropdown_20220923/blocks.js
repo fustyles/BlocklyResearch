@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	fuFieldsImageDropdown.FieldsImageDropdown.prototype.showEditor_ = function() {
 	  fuFieldsImageDropdown.FieldsImageDropdown.superClass_.showEditor_.call(this);
 
-	  var div = Blockly.WidgetDiv.DIV;
+	  var div = Blockly.WidgetDiv.getDiv();
 	  if (!div.firstChild) {
 		return;
 	  }
@@ -115,13 +115,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		  this, this.dropdownDispose_.bind(this));
 
 	  this.clickWrapper_ =
-		  Blockly.bindEvent_(this.imageElement_, 'click', this,
+		  Blockly.browserEvents.bind(this.imageElement_, 'click', this,
 			  this.hide_);
 	  this.moveWrapper_ =
-		  Blockly.bindEvent_(this.imageElement_, 'mousemove', this,
+		  Blockly.browserEvents.bind(this.imageElement_, 'mousemove', this,
 			  this.onMouseMove);
 	  this.downWrapper_ =
-		  Blockly.bindEvent_(this.imageElement_, 'mousedown', this,
+		  Blockly.browserEvents.bind(this.imageElement_, 'mousedown', this,
 			  this.onMouseDown);
 			  
 	  this.updateGraph_();
@@ -141,15 +141,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	fuFieldsImageDropdown.FieldsImageDropdown.prototype.dropdownDispose_ = function() {
 	  if (this.clickWrapper_) {
-		Blockly.unbindEvent_(this.clickWrapper_);
+		Blockly.browserEvents.unbind(this.clickWrapper_);
 		this.clickWrapper_ = null;
 	  }
 	  if (this.moveWrapper_) {
-		Blockly.unbindEvent_(this.moveWrapper_);
+		Blockly.browserEvents.unbind(this.moveWrapper_);
 		this.moveWrapper_ = null;
 	  }
 	  if (this.downWrapper_) {
-		Blockly.unbindEvent_(this.downWrapper_);
+		Blockly.browserEvents.unbind(this.downWrapper_);
 		this.downWrapper_ = null;
 	  }  
 	  this.imageElement_ = null;
