@@ -32,7 +32,7 @@
 		var divDropdownHeight = 100;
 		
 		this.field = new fuFieldsImageDropdown.FieldsImageDropdown('ccc', options, this.validate, divDropdownWidth, divDropdownHeight);
-		//this.field = new fuFieldsImageDropdown.FieldsImageDropdown('ccc', this.options);
+		//this.field = new fuFieldsImageDropdown.FieldsImageDropdown('ccc', options);
 		
 		this.appendDummyInput()
 			.appendField('Image dropdown')
