@@ -14,7 +14,7 @@
 /**
  * @fileoverview Field FieldsImageDropdown.
  * @author https://www.facebook.com/francefu/
- * @Update 9/23/2022 23:30 (Taiwan Standard Time)
+ * @Update 9/24/2022 00:00 (Taiwan Standard Time)
  */
  
  /*
@@ -23,7 +23,7 @@
 	Blockly.Blocks["test"] = {
 	  init: function() {
 		  
-		this.options = [
+		var options = [
 			['aaa', "http://xxx/aaa.jpg"],
 			['bbb', "http://xxx/bbb.jpg"],
 			['ccc', "http://xxx/ccc.jpg"]
@@ -31,7 +31,7 @@
 		var divDropdownWidth = 80;
 		var divDropdownHeight = 100;
 		
-		this.field = new fuFieldsImageDropdown.FieldsImageDropdown('ccc', this.options, this.validate, divDropdownWidth, divDropdownHeight);
+		this.field = new fuFieldsImageDropdown.FieldsImageDropdown('ccc', options, this.validate, divDropdownWidth, divDropdownHeight);
 		//this.field = new fuFieldsImageDropdown.FieldsImageDropdown('ccc', this.options);
 		
 		this.appendDummyInput()
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	Blockly.Blocks["test"] = {
 	  init: function() {
 		
-		this.options = [
+		var options = [
 			['CLOUDY', "https://imgur.com/Hi33BEx.png"],
 			['PARTLY CLOUDY', "https://imgur.com/rX0np7I.png"],
 			['MOON', "https://imgur.com/ulJIWW4.png"],
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		var divDropdownWidth = 200;
 		var divDropdownHeight = 100;
 		
-		this.field = new fuFieldsImageDropdown.FieldsImageDropdown('STAR', this.options, this.validate, divDropdownWidth, divDropdownHeight);
+		this.field = new fuFieldsImageDropdown.FieldsImageDropdown('STAR', options, this.validate, divDropdownWidth, divDropdownHeight);
 		
 		this.appendDummyInput()
 			.appendField('Image dropdown')
