@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 
 	fuFieldsFilter2Level.FieldFilter.prototype.doClassValidation_ = function(opt_newValue) {
-	  if (opt_newValue === null || opt_newValue === undefined) {
+	  if (opt_newValue === null || opt_newValue === undefined || opt_newValue == -1) {
 		return null;
 	  }
 	  var note = this.valueToNote(opt_newValue); 
