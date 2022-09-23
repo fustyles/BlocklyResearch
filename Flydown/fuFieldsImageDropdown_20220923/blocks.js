@@ -14,7 +14,7 @@
 /**
  * @fileoverview Field FieldsImageDropdown.
  * @author https://www.facebook.com/francefu/
- * @Update 9/23/2022 22:00 (Taiwan Standard Time)
+ * @Update 9/23/2022 23:30 (Taiwan Standard Time)
  */
  
  /*
@@ -176,8 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  var bBox = this.imageElement_.getBoundingClientRect();
 	  var scrolltop = this.imageElement_.firstChild.scrollTop;
 	  var dy = e.clientY - bBox.top + scrolltop;
-	  var highLight = Array.from(this.showList);
-	  var index = (Math.round((dy-this.divPadding)/this.divRowHeight)<highLight.length)?Math.round((dy-this.divPadding)/this.divRowHeight):-1;
+	  var index = (Math.round((dy-this.divPadding)/this.divRowHeight)<this.showList.length)?Math.round((dy-this.divPadding)/this.divRowHeight):-1;
 	  this.setEditorValue_(index);
 	};
 
