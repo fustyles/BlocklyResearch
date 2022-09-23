@@ -28,10 +28,10 @@
 			['bbb', "http://xxx/bbb.jpg"],
 			['ccc', "http://xxx/ccc.jpg"]
 		];
-		var divDrpodownWidth = 80;
-		var divDrpodownHeight = 100;
+		var divDropdownWidth = 80;
+		var divDropdownHeight = 100;
 		
-		this.field = new fuFieldsImageDropdown.FieldsImageDropdown('ccc', this.options, this.validate, divDrpodownWidth, divDrpodownHeight);
+		this.field = new fuFieldsImageDropdown.FieldsImageDropdown('ccc', this.options, this.validate, divDropdownWidth, divDropdownHeight);
 		
 		this.appendDummyInput()
 			.appendField('Image dropdown')
@@ -245,10 +245,10 @@ document.addEventListener('DOMContentLoaded', function() {
 			['RAIN', "https://imgur.com/wRwu4pZ.png"],
 			['STAR', "https://imgur.com/KMWOcGf.png"]
 		];
-		var divDrpodownWidth = 200;
-		var divDrpodownHeight = 100;
+		var divDropdownWidth = 200;
+		var divDropdownHeight = 100;
 		
-		this.field = new fuFieldsImageDropdown.FieldsImageDropdown('STAR', this.options, this.validate, divDrpodownWidth, divDrpodownHeight);
+		this.field = new fuFieldsImageDropdown.FieldsImageDropdown('STAR', this.options, this.validate, divDropdownWidth, divDropdownHeight);
 		
 		this.appendDummyInput()
 			.appendField('Image dropdown')
