@@ -7,14 +7,14 @@
 
 /**
  * @license
- * Copyright 2021 Taiwan (ChungYi Fu)
+ * Copyright 2022 Taiwan (ChungYi Fu)
  * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
  * @fileoverview Field Filter.
  * @author https://www.facebook.com/francefu/
- * @Update 12/15/2021 21:00 (Taiwan Standard Time)
+ * @Update 9/24/2022 09:00 (Taiwan Standard Time)
  */
  
  /*
@@ -30,8 +30,6 @@
 		//etc...
 	  }
 	};
-
-
 	
 	Blockly.Blocks["test2"] = {
 	  init: function() {
@@ -130,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	fuFieldsFilter.FieldFilter.prototype.showEditor_ = function() {
 	  fuFieldsFilter.FieldFilter.superClass_.showEditor_.call(this);
 
-	  var div = Blockly.WidgetDiv.DIV;
+	  var div = Blockly.WidgetDiv.getDiv();
 	  if (!div.firstChild) {
 		return;
 	  }
@@ -143,13 +141,13 @@ document.addEventListener('DOMContentLoaded', function() {
 		  this, this.dropdownDispose_.bind(this));
 
 	  this.clickWrapper_ =
-		  Blockly.bindEvent_(this.imageElement_, 'click', this,
+		  Blockly.browserEvents.bind(this.imageElement_, 'click', this,
 			  this.hide_);
 	  this.moveWrapper_ =
-		  Blockly.bindEvent_(this.imageElement_, 'mousemove', this,
+		  Blockly.browserEvents.bind(this.imageElement_, 'mousemove', this,
 			  this.onMouseMove);
 	  this.downWrapper_ =
-		  Blockly.bindEvent_(this.imageElement_, 'mousedown', this,
+		  Blockly.browserEvents.bind(this.imageElement_, 'mousedown', this,
 			  this.onMouseDown);
 			  
 	  this.updateGraph_();
@@ -168,15 +166,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	fuFieldsFilter.FieldFilter.prototype.dropdownDispose_ = function() {
 	  if (this.clickWrapper_) {
-		Blockly.unbindEvent_(this.clickWrapper_);
+		Blockly.browserEvents.unbind(this.clickWrapper_);
 		this.clickWrapper_ = null;
 	  }
 	  if (this.moveWrapper_) {
-		Blockly.unbindEvent_(this.moveWrapper_);
+		Blockly.browserEvents.unbind(this.moveWrapper_);
 		this.moveWrapper_ = null;
 	  }
 	  if (this.downWrapper_) {
-		Blockly.unbindEvent_(this.downWrapper_);
+		Blockly.browserEvents.unbind(this.downWrapper_);
 		this.downWrapper_ = null;
 	  }  
 	  this.imageElement_ = null;
@@ -202,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  var bBox = this.imageElement_.getBoundingClientRect();
 	  var dy = e.clientY - bBox.top;
 	  var highLight = Array.from(this.WORDS);
-	  var note = (Math.round((dy-5)/24.5)<highLight.length)?Math.round((dy-5)/24.5):-1;
+	  var note = (Math.round((dy-5)/24.5)<this.WORDS.length)?Math.round((dy-5)/24.5):-1;
 	  this.setEditorValue_(note);
 	};
 
@@ -259,7 +257,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 
 	fuFieldsFilter.FieldFilter.prototype.doClassValidation_ = function(opt_newValue) {
-	  if (opt_newValue === null || opt_newValue === undefined || opt_newValue == -1) {
+	  if (opt_newValue === null || opt_newValue === undefined) {
 		return null;
 	  }
 	  var note = this.valueToNote(opt_newValue); 
