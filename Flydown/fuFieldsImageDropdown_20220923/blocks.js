@@ -34,7 +34,9 @@
 		var divDropdownHeight = 100;		  
 		  
 		var imageField = new Blockly.FieldImage(options[0][1], 18, 18, { alt: "*", flipRtl: "FALSE" });
-		var field = new fuFieldsImageDropdown.FieldsImageDropdown('STAR', options, this.validate, divDropdownWidth, divDropdownHeight, imageField);
+		
+		var field = new fuFieldsImageDropdown.FieldsImageDropdown('', options, this.validate, divDropdownWidth, divDropdownHeight, imageField);
+		//var field = new fuFieldsImageDropdown.FieldsImageDropdown('', options);
 		
 		this.appendDummyInput()
 			.appendField(imageField, "image");
@@ -256,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		var divDropdownHeight = 100;		  
 		  
 		var imageField = new Blockly.FieldImage(options[0][1], 18, 18, { alt: "*", flipRtl: "FALSE" });
-		var field = new fuFieldsImageDropdown.FieldsImageDropdown('STAR', options, this.validate, divDropdownWidth, divDropdownHeight, imageField);
+		var field = new fuFieldsImageDropdown.FieldsImageDropdown('', options, this.validate, divDropdownWidth, divDropdownHeight, imageField);
 		
 		this.appendDummyInput()
 			.appendField(imageField, "image");
