@@ -14,7 +14,7 @@
 /**
  * @fileoverview Field FieldsImageDropdown.
  * @author https://www.facebook.com/francefu/
- * @Update 9/25/2022 22:00 (Taiwan Standard Time)
+ * @Update 9/25/2022 22:30 (Taiwan Standard Time)
  */
  
  /*
@@ -24,20 +24,23 @@
 	  init: function() {
 		  
 		var options = [
-			['aaa', "http://xxx/aaa.jpg"],
-			['bbb', "http://xxx/bbb.jpg"],
-			['ccc', "http://xxx/ccc.jpg"]
+			['CLOUDY', "https://imgur.com/Hi33BEx.png"],
+			['PARTLY CLOUDY', "https://imgur.com/rX0np7I.png"],
+			['MOON', "https://imgur.com/ulJIWW4.png"],
+			['RAIN', "https://imgur.com/wRwu4pZ.png"],
+			['STAR', "https://imgur.com/KMWOcGf.png"]
 		];
-		var divDropdownWidth = 80;
-		var divDropdownHeight = 100;
-		
-		this.field = new fuFieldsImageDropdown.FieldsImageDropdown('ccc', options, this.validate, divDropdownWidth, divDropdownHeight);
-		//this.field = new fuFieldsImageDropdown.FieldsImageDropdown('ccc', options);
+		var divDropdownWidth = 200;
+		var divDropdownHeight = 100;		  
+		  
+		var imageField = new Blockly.FieldImage(options[0][1], 18, 18, { alt: "*", flipRtl: "FALSE" });
+		var field = new fuFieldsImageDropdown.FieldsImageDropdown('STAR', options, this.validate, divDropdownWidth, divDropdownHeight, imageField);
 		
 		this.appendDummyInput()
-			.appendField('Image dropdown')
-			.appendField(this.field, 'imageDropdown');
-			
+			.appendField(imageField, "image");
+		this.appendDummyInput()
+			.appendField(field, 'imageDropdown');
+						
 		this.setInputsInline(true);		
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
@@ -45,7 +48,7 @@
 	  },
 	  validate: function(newValue) {
 	  }
-	}; 
+	};
 	
  */
 
@@ -76,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	var fuFieldsImageDropdown = fuFieldsImageDropdown||{};
 
-	fuFieldsImageDropdown.FieldsImageDropdown = function(text, options, opt_validate, opt_width, opt_height) {
+	fuFieldsImageDropdown.FieldsImageDropdown = function(text, options, opt_validate, opt_width, opt_height, opt_imageField) {
 	  fuFieldsImageDropdown.FieldsImageDropdown.superClass_.constructor.call(this, text, opt_validate);
 	  this.textSize = 14;
 	  this.imageSize = 24;
@@ -84,9 +87,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	  
 	  this.divWidth = opt_width||200;
 	  this.divHeight = opt_height||100;
+	  
 	  this.divPadding = 5;
 	  this.originList = options;
 	  this.showList = [];
+	  this.imageField = opt_imageField||null;
 
 	  this.setSpellcheck(false);
 	  this.clickWrapper_ = null;
@@ -220,11 +225,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 
 	fuFieldsImageDropdown.FieldsImageDropdown.prototype.doClassValidation_ = function(opt_newValue) {
-	  if (opt_newValue === null || opt_newValue === undefined || opt_newValue == -1 || opt_newValue == "") {
+	  if (opt_newValue === null || opt_newValue === undefined || opt_newValue == -1) {
 		return null;
 	  }
 	  var index = this.valueToIndex(opt_newValue); 
 	  if (index) {
+		if (this.imageField&&this.originList) {
+			this.imageField.setValue(this.originList[opt_newValue][1]);
+		}
 		return opt_newValue;
 	  }
 	  return 0;
@@ -233,11 +241,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 	//************************************************
-
-
+		
 	Blockly.Blocks["test"] = {
 	  init: function() {
-		
+		  
 		var options = [
 			['CLOUDY', "https://imgur.com/Hi33BEx.png"],
 			['PARTLY CLOUDY', "https://imgur.com/rX0np7I.png"],
@@ -246,14 +253,16 @@ document.addEventListener('DOMContentLoaded', function() {
 			['STAR', "https://imgur.com/KMWOcGf.png"]
 		];
 		var divDropdownWidth = 200;
-		var divDropdownHeight = 100;
-		
-		this.field = new fuFieldsImageDropdown.FieldsImageDropdown('STAR', options, this.validate, divDropdownWidth, divDropdownHeight);
+		var divDropdownHeight = 100;		  
+		  
+		var imageField = new Blockly.FieldImage(options[0][1], 18, 18, { alt: "*", flipRtl: "FALSE" });
+		var field = new fuFieldsImageDropdown.FieldsImageDropdown('STAR', options, this.validate, divDropdownWidth, divDropdownHeight, imageField);
 		
 		this.appendDummyInput()
-			.appendField('Image dropdown')
-			.appendField(this.field, 'imageDropdown');
-			
+			.appendField(imageField, "image");
+		this.appendDummyInput()
+			.appendField(field, 'imageDropdown');
+						
 		this.setInputsInline(true);		
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
