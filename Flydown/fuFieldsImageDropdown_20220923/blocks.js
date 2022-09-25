@@ -89,11 +89,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	  
 	  this.divWidth = opt_width||200;
 	  this.divHeight = opt_height||100;
+	  this.imageField = opt_imageField||null;
 	  
 	  this.divPadding = 5;
 	  this.originList = options;
 	  this.showList = [];
-	  this.imageField = opt_imageField||null;
 
 	  this.setSpellcheck(false);
 	  this.clickWrapper_ = null;
