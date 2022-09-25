@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  if (opt_newValue === null || opt_newValue === undefined) {
 		return null;
 	  }
-	  var note = this.valueToNote(opt_newValue); 
+	  var note = this.valueToNote(opt_newValue);
 	  if (note) {
 		return opt_newValue;
 	  }
