@@ -220,14 +220,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 
 	fuFieldsImageDropdown.FieldsImageDropdown.prototype.doClassValidation_ = function(opt_newValue) {
-	  if (opt_newValue === null || opt_newValue === undefined || opt_newValue == -1) {
+	  if (opt_newValue === null || opt_newValue === undefined || opt_newValue == -1 || opt_newValue == "") {
 		return null;
 	  }
 	  var index = this.valueToIndex(opt_newValue); 
 	  if (index) {
 		return opt_newValue;
 	  }
-	  return "";
+	  return 0;
 	};
 
 
