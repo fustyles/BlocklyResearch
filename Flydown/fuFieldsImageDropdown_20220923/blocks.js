@@ -187,14 +187,14 @@ document.addEventListener('DOMContentLoaded', function() {
 	  this.setEditorValue_(index);
 	};
 
-	fuFieldsImageDropdown.FieldsImageDropdown.prototype.valueToIndex = function(value) {
+	fuFieldsImageDropdown.FieldsImageDropdown.prototype.valueToText = function(value) {
 	  if (this.showList)
 		  return this.originList[Number(value)][0];
 	  else
 		  return "";
 	};
 
-	fuFieldsImageDropdown.FieldsImageDropdown.prototype.indexToValue = function(text) {
+	fuFieldsImageDropdown.FieldsImageDropdown.prototype.textToValue = function(text) {
 	  var normalizedText = text.trim();
 	  var i = this.showList.indexOf(normalizedText);
 	  return i > -1? 0 : -1;
@@ -204,15 +204,15 @@ document.addEventListener('DOMContentLoaded', function() {
 	  if (this.isBeingEdited_) {
 		return fuFieldsImageDropdown.FieldsImageDropdown.superClass_.getText_.call(this);
 	  }
-	  return this.valueToIndex(this.getValue()) || null;
+	  return this.valueToText(this.getValue()) || null;
 	};
 
 	fuFieldsImageDropdown.FieldsImageDropdown.prototype.getEditorText_ = function(value) {
-	  return this.valueToIndex(value);
+	  return this.valueToText(value);
 	};
 
 	fuFieldsImageDropdown.FieldsImageDropdown.prototype.getValueFromEditorText_ = function(text) {
-	  return this.indexToValue(text);
+	  return this.textToValue(text);
 	};
 
 	fuFieldsImageDropdown.FieldsImageDropdown.prototype.render_ = function() {
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  if (opt_newValue === null || opt_newValue === undefined || opt_newValue == -1) {
 		return null;
 	  }
-	  var index = this.valueToIndex(opt_newValue); 
+	  var index = this.valueToText(opt_newValue); 
 	  if (index) {
 		if (this.imageField&&this.originList) {
 			this.imageField.setValue(this.originList[opt_newValue][1]);
