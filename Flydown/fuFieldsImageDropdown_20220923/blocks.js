@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  this.imageElement_.style = 'padding: '+this.divPadding+'px '+this.divPadding+'px '+this.divPadding+'px '+this.divPadding+'px; height: '+this.divHeight+'px;width: '+this.divWidth+'px;size: '+this.textSize+'px;white-space:nowrap;';
 	  this.showList = [];
 	  for (var j=0;j<this.originList.length;j++) {
-		this.showList.push('<img src="'+this.originList[j][1]+'" style="width:'+this.imageSize+'px;height:'+this.imageSize+'px;">' + '　' + '<span style="width: 100%;display: inline-block;vertical-align: top;line-height: normal;">' + this.originList[j][0] + '</span>');
+		this.showList.push((this.originList[j].length>1?('<img src="'+this.originList[j][1]+'" style="width:'+this.imageSize+'px;height:'+this.imageSize+'px;">' + '　'):'') + '<span style="width: 100%;display: inline-block;vertical-align: top;line-height: normal;">' + this.originList[j][0] + '</span>');
 	  }	  
 	  this.imageElement_.innerHTML = this.showList.join("<br>");
 	  return this.imageElement_;
@@ -259,8 +259,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 	//************************************************
-		
+
 	Blockly.Blocks["test1"] = {
+	  init: function() {
+		  
+		var options = [
+			['CLOUDY'],
+			['PARTLY CLOUDY'],
+			['MOON'],
+			['RAIN'],
+			['STAR']
+		];	  
+		  
+		var field = new fuFieldsImageDropdown.eventparam('', options);
+		
+		this.appendDummyInput()
+			.appendField(field, 'imageDropdown');
+						
+		this.setInputsInline(true);		
+		this.setPreviousStatement(true, null);
+		this.setNextStatement(true, null);
+		this.setColour(100);
+		  
+	  },
+	  validate: function(newValue) {
+	  }
+	};
+	
+	Blockly.Blocks["test2"] = {
 	  init: function() {
 		  
 		var options = [
@@ -291,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  }
 	};
 	
-	Blockly.Blocks["test2"] = {
+	Blockly.Blocks["test3"] = {
 	  init: function() {
 		  
 		var options = [
