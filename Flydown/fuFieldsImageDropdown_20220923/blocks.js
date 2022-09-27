@@ -356,4 +356,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	  return '';
 	};
 	
+	Blockly.JavaScript['test3'] = function(block) {
+	  return '';
+	};
+		
 })	
