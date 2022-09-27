@@ -30,6 +30,17 @@
 			['RAIN', "https://imgur.com/wRwu4pZ.png"],
 			['STAR', "https://imgur.com/KMWOcGf.png"]
 		];
+		
+		/*
+		var options = [
+			['CLOUDY', "https://imgur.com/Hi33BEx.png","ccc"],
+			['PARTLY CLOUDY', "https://imgur.com/rX0np7I.png","ppp"],
+			['MOON', "https://imgur.com/ulJIWW4.png","mmmm"],
+			['RAIN', "https://imgur.com/wRwu4pZ.png","rrr"],
+			['STAR', "https://imgur.com/KMWOcGf.png","sss"]
+		];
+		*/
+		
 		var dropdownWidth = 200;
 		var dropdownHeight = 100;		  
 		  
@@ -188,8 +199,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 
 	fuFieldsImageDropdown.eventparam.prototype.valueToText = function(value) {
-	  if (this.showList)
-		  return this.originList[Number(value)][0];
+	  if (this.showList) {
+		  if (this.originList[Number(value)].length>2)
+			return this.originList[Number(value)][2];
+		  else
+			return this.originList[Number(value)][0];
+	  }
 	  else
 		  return "";
 	};
