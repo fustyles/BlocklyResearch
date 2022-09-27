@@ -25,7 +25,7 @@
 	  
 		// Option Type 1:  [value]  -->  ['CLOUDY']
 		// Option Type 2:  [value, imageSrc]  -->  ['CLOUDY', "https://imgur.com/Hi33BEx.png"]
-		// Option Type 3:  [name, imageSrc, value]  -->  ['CLOUDY', "https://imgur.com/Hi33BEx.png", "ccc"]
+		// Option Type 3:  [text, imageSrc, value]  -->  ['CLOUDY', "https://imgur.com/Hi33BEx.png", "ccc"]
 		var options = [
 			['CLOUDY', "https://imgur.com/Hi33BEx.png"],
 			['PARTLY CLOUDY', "https://imgur.com/rX0np7I.png"],
