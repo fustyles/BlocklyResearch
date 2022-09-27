@@ -4,5 +4,7 @@ var catTEST ='<xml>'+
 '	  </block>'+
 '	  <block type="test2">'+
 '	  </block>'+
+'	  <block type="test3">'+
+'	  </block>'+
 '  </category>'+
 '</xml>';
