@@ -205,7 +205,11 @@ document.addEventListener('DOMContentLoaded', function() {
 	fuFieldsImageDropdown.eventparam.prototype.textToValue = function(text) {		
 	  var normalizedText = text.trim();
 	  for (var i=0;i< this.originList.length;i++) {
-		  if (this.originList[i][0].toUpperCase()==text.toUpperCase()) 
+		  if (this.originList[i].length>2)
+			var txt = this.originList[i][2];
+		  else
+			var txt = this.originList[i][0];
+		  if (txt.toUpperCase()==text.toUpperCase()) 
 			  return i;
 	  }
 	  return -1;
@@ -255,11 +259,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	//************************************************
 		
-	Blockly.Blocks["test"] = {
+	Blockly.Blocks["test1"] = {
 	  init: function() {
 		  
-		// Option Type 1:  [name, imageSrc]
-		// Option Type 2:  [name, imageSrc, value]
 		var options = [
 			['CLOUDY', "https://imgur.com/Hi33BEx.png"],
 			['PARTLY CLOUDY', "https://imgur.com/rX0np7I.png"],
@@ -288,7 +290,42 @@ document.addEventListener('DOMContentLoaded', function() {
 	  }
 	};
 	
-	Blockly.JavaScript['test'] = function(block) {
+	Blockly.Blocks["test2"] = {
+	  init: function() {
+		  
+		var options = [
+			['CLOUDY', "https://imgur.com/Hi33BEx.png", "ccc"],
+			['PARTLY CLOUDY', "https://imgur.com/rX0np7I.png", "ppp"],
+			['MOON', "https://imgur.com/ulJIWW4.png", "mmm"],
+			['RAIN', "https://imgur.com/wRwu4pZ.png", "rrr"],
+			['STAR', "https://imgur.com/KMWOcGf.png", "sss"]
+		];
+		var dropdownWidth = 200;
+		var dropdownHeight = 100;		  
+		  
+		var imageField = new Blockly.FieldImage(options[0][1], 18, 18, { alt: "*", flipRtl: "FALSE" });
+		var field = new fuFieldsImageDropdown.eventparam('', options, this.validate, dropdownWidth, dropdownHeight, imageField);
+		
+		this.appendDummyInput()
+			.appendField(imageField, "image");
+		this.appendDummyInput()
+			.appendField(field, 'imageDropdown');
+						
+		this.setInputsInline(true);		
+		this.setPreviousStatement(true, null);
+		this.setNextStatement(true, null);
+		this.setColour(100);
+		  
+	  },
+	  validate: function(newValue) {
+	  }
+	};
+	
+	Blockly.JavaScript['test1'] = function(block) {
+	  return '';
+	};	
+	
+	Blockly.JavaScript['test2'] = function(block) {
 	  return '';
 	};
 	
