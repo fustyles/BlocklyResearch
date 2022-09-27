@@ -30,12 +30,12 @@
 			['RAIN', "https://imgur.com/wRwu4pZ.png"],
 			['STAR', "https://imgur.com/KMWOcGf.png"]
 		];
-		var divDropdownWidth = 200;
-		var divDropdownHeight = 100;		  
+		var dropdownWidth = 200;
+		var dropdownHeight = 100;		  
 		  
 		var imageField = new Blockly.FieldImage(options[0][1], 18, 18, { alt: "*", flipRtl: "FALSE" });
 		
-		var field = new fuFieldsImageDropdown.FieldsImageDropdown('', options, this.validate, divDropdownWidth, divDropdownHeight, imageField);
+		var field = new fuFieldsImageDropdown.FieldsImageDropdown('', options, this.validate, dropdownWidth, dropdownHeight, imageField);
 		//var field = new fuFieldsImageDropdown.FieldsImageDropdown('', options);
 		
 		this.appendDummyInput()
@@ -254,11 +254,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			['RAIN', "https://imgur.com/wRwu4pZ.png"],
 			['STAR', "https://imgur.com/KMWOcGf.png"]
 		];
-		var divDropdownWidth = 200;
-		var divDropdownHeight = 100;		  
+		var dropdownWidth = 200;
+		var dropdownHeight = 100;		  
 		  
 		var imageField = new Blockly.FieldImage(options[0][1], 18, 18, { alt: "*", flipRtl: "FALSE" });
-		var field = new fuFieldsImageDropdown.FieldsImageDropdown('', options, this.validate, divDropdownWidth, divDropdownHeight, imageField);
+		var field = new fuFieldsImageDropdown.FieldsImageDropdown('', options, this.validate, dropdownWidth, dropdownHeight, imageField);
 		
 		this.appendDummyInput()
 			.appendField(imageField, "image");
