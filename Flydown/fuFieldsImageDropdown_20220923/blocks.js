@@ -23,6 +23,8 @@
 	Blockly.Blocks["test"] = {
 	  init: function() {
 		  
+		// Option Type 1:  [name, imageSrc]
+		// Option Type 2:  [name, imageSrc, value]
 		var options = [
 			['CLOUDY', "https://imgur.com/Hi33BEx.png"],
 			['PARTLY CLOUDY', "https://imgur.com/rX0np7I.png"],
@@ -30,16 +32,6 @@
 			['RAIN', "https://imgur.com/wRwu4pZ.png"],
 			['STAR', "https://imgur.com/KMWOcGf.png"]
 		];
-		
-		/*
-		var options = [
-			['CLOUDY', "https://imgur.com/Hi33BEx.png","ccc"],
-			['PARTLY CLOUDY', "https://imgur.com/rX0np7I.png","ppp"],
-			['MOON', "https://imgur.com/ulJIWW4.png","mmmm"],
-			['RAIN', "https://imgur.com/wRwu4pZ.png","rrr"],
-			['STAR', "https://imgur.com/KMWOcGf.png","sss"]
-		];
-		*/
 		
 		var dropdownWidth = 200;
 		var dropdownHeight = 100;		  
@@ -58,6 +50,7 @@
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
 		this.setColour(100);
+		
 	  },
 	  validate: function(newValue) {
 	  }
@@ -265,6 +258,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	Blockly.Blocks["test"] = {
 	  init: function() {
 		  
+		// Option Type 1:  [name, imageSrc]
+		// Option Type 2:  [name, imageSrc, value]
 		var options = [
 			['CLOUDY', "https://imgur.com/Hi33BEx.png"],
 			['PARTLY CLOUDY', "https://imgur.com/rX0np7I.png"],
@@ -287,6 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		this.setPreviousStatement(true, null);
 		this.setNextStatement(true, null);
 		this.setColour(100);
+		  
 	  },
 	  validate: function(newValue) {
 	  }
