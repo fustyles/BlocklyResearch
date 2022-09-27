@@ -23,7 +23,7 @@
 	Blockly.Blocks["test"] = {
 	  init: function() {
 		  
-		// Option Type 1:  [name, imageSrc]
+		// Option Type 1:  [value, imageSrc]
 		// Option Type 2:  [name, imageSrc, value]
 		var options = [
 			['CLOUDY', "https://imgur.com/Hi33BEx.png"],
