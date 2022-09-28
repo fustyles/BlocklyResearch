@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	  this.textSize = 14;
 	  this.imageSize = 24;
 	  //If you change textSize value or imageSize value, you need to get divRowHeight value by testing.
-	  this.divRowHeight = (options[0].length>1)?33.5:24.5;		
+	  this.divRowHeight = (options[0].length>1)?30.9:24.5;	
 	  
 	  this.divWidth = opt_width||200;
 	  this.divHeight = opt_height||100;
