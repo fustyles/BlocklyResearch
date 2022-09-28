@@ -247,8 +247,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	  if (opt_newValue === null || opt_newValue === undefined || opt_newValue == -1) {
 		return null;
 	  }
-	  var index = this.valueToText(opt_newValue); 
-	  if (index) {
+	  var text = this.valueToText(opt_newValue); 
+	  if (text) {
 		if (this.imageField&&this.originList) {
 			this.imageField.setValue(this.originList[opt_newValue][1]);
 		}
