@@ -1,5 +1,5 @@
 var catTEST ='<xml>'+
-'  <category name="TEST" id="catTEST" colour="170">'+
+'  <category name="TEST" id="catTEST" colour="100">'+
 '	  <block type="test1">'+
 '	  </block>'+
 '	  <block type="test2">'+
