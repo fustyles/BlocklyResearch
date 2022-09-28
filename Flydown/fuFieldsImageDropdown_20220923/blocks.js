@@ -14,7 +14,7 @@
 /**
  * @fileoverview Field FieldsImageDropdown.
  * @author https://www.facebook.com/francefu/
- * @Update 9/28/2022 18:30 (Taiwan Standard Time)
+ * @Update 9/28/2022 19:30 (Taiwan Standard Time)
  */
  
  /*
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 
 	fuFieldsImageDropdown.eventparam.prototype.valueToText = function(value) {
-	  if (this.showList) {
+	  if (this.showList&&this.originList) {
 		  if (this.originList[Number(value)].length>2)
 			return this.originList[Number(value)][2];
 		  else
@@ -221,23 +221,29 @@ document.addEventListener('DOMContentLoaded', function() {
 	  if (this.isBeingEdited_) {
 		return fuFieldsImageDropdown.eventparam.superClass_.getText_.call(this);
 	  }
-	  return this.valueToText(this.getValue()) || null;
+	  var text = this.valueToText(this.getValue()); 
+	  if (text) {
+		if (this.imageField&&this.originList) {			
+			this.imageField.setValue(this.originList[this.getValue()][1]);
+		}
+	  }
+	  return text || null;
 	};
 
 	fuFieldsImageDropdown.eventparam.prototype.getEditorText_ = function(value) {	
 	  return this.valueToText(value);
 	};
 
-	fuFieldsImageDropdown.eventparam.prototype.getValueFromEditorText_ = function(text) {		
+	fuFieldsImageDropdown.eventparam.prototype.getValueFromEditorText_ = function(text) {	
 	  return this.textToValue(text);
 	};
 
-	fuFieldsImageDropdown.eventparam.prototype.render_ = function() {
+	fuFieldsImageDropdown.eventparam.prototype.render_ = function() {		
 	  fuFieldsImageDropdown.eventparam.superClass_.render_.call(this);
 	  this.updateGraph_();
 	};
 
-	fuFieldsImageDropdown.eventparam.prototype.updateGraph_ = function() {
+	fuFieldsImageDropdown.eventparam.prototype.updateGraph_ = function() {		
 	  if (!this.imageElement_) {
 		return;
 	  }
@@ -246,12 +252,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	fuFieldsImageDropdown.eventparam.prototype.doClassValidation_ = function(opt_newValue) {	
 	  if (opt_newValue === null || opt_newValue === undefined || opt_newValue == -1) {
 		return null;
-	  }
+	  }  
 	  var text = this.valueToText(opt_newValue); 
 	  if (text) {
-		if (this.imageField&&this.originList) {
-			this.imageField.setValue(this.originList[opt_newValue][1]);
-		}
 		return opt_newValue;
 	  }
 	  return 0;
@@ -361,4 +364,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	  return '';
 	};
 		
-})	
+})
