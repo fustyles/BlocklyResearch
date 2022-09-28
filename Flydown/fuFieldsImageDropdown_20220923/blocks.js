@@ -352,6 +352,32 @@ document.addEventListener('DOMContentLoaded', function() {
 	  }
 	};
 	
+	Blockly.Blocks["test4"] = {
+	  init: function() {
+		  
+		var options = [
+			['CLOUDY', "https://imgur.com/Hi33BEx.png", "ccc"],
+			['PARTLY CLOUDY', "https://imgur.com/rX0np7I.png", "ppp"],
+			['MOON', "https://imgur.com/ulJIWW4.png", "mmm"],
+			['RAIN', "https://imgur.com/wRwu4pZ.png", "rrr"],
+			['STAR', "https://imgur.com/KMWOcGf.png", "sss"]
+		];		  
+		  
+		var field = new fuFieldsImageDropdown.eventparam('', options);
+
+		this.appendDummyInput()
+			.appendField(field, 'imageDropdown');
+						
+		this.setInputsInline(true);		
+		this.setPreviousStatement(true, null);
+		this.setNextStatement(true, null);
+		this.setColour(100);
+		  
+	  },
+	  validate: function(newValue) {
+	  }
+	};	
+	
 	Blockly.JavaScript['test1'] = function(block) {
 	  return '';
 	};	
@@ -363,5 +389,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	Blockly.JavaScript['test3'] = function(block) {
 	  return '';
 	};
-		
+	
+	Blockly.JavaScript['test4'] = function(block) {
+	  return '';
+	};		
 })
