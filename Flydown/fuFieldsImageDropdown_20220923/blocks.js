@@ -90,7 +90,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	  fuFieldsImageDropdown.eventparam.superClass_.constructor.call(this, text, opt_validate);
 	  this.textSize = 14;
 	  this.imageSize = 24;
-	  this.divRowHeight = (options[0].length>1)?33.5:24.5;	//If you change textSize value or imageSize value, you need to get divRowHeight value by testing.	
+	  //If you change textSize value or imageSize value, you need to get divRowHeight value by testing.
+	  this.divRowHeight = (options[0].length>1)?33.5:24.5;		
 	  
 	  this.divWidth = opt_width||200;
 	  this.divHeight = opt_height||100;
