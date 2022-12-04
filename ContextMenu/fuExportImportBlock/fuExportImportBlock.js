@@ -1,12 +1,13 @@
-/*
-
+/**
  * @license
- * Copyright 2021 Taiwan (ChungYi Fu)
+ * Copyright 2022 Taiwan (ChungYi Fu)
  * SPDX-License-Identifier: Apache-2.0
+ */
 
- * @fileoverview Multi Dropdown 2 levels.
+/**
+ * @fileoverview Export and import block
  * @author https://www.facebook.com/francefu/
- * @Update 18/2/2022 00:00 (Taiwan Standard Time)
+ * @Update 15/2/2022 11:00 (Taiwan Standard Time)
 
 //main.html
 <script src="fuExportImportBlock.js"></script>
