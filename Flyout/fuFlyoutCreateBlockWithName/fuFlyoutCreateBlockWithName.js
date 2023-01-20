@@ -47,11 +47,10 @@ Blockly.myProcedure.flyoutCategory=function(workspace){
 };
 
 var checkMyProcedure = function(){
-	if(Blockly.getMainWorkspace() == null){
+	if (Blockly.getMainWorkspace() == null)
 		setTimeout(checkMyProcedure, 200);
-	} else {
+	else
 		Blockly.myProcedure&&Blockly.myProcedure.flyoutCategory&&(Blockly.getMainWorkspace().registerToolboxCategoryCallback(Blockly.myProcedure_CATEGORY_NAME, Blockly.myProcedure.flyoutCategory));
-	}
 };
 checkMyProcedure();
 
