@@ -8,7 +8,7 @@ https://www.facebook.com/francefu/
 
 */
 
-var catMyProcedure ='<xml><category id="catMyProcedure" name="%{BKY_MYPROCEDURE_TITLE}" colour="%{BKY_MYPROCEDURE_HUE}"  custom="MYPROCEDURE"></category></xml>';
+var catMyProcedure ='<category id="catMyProcedure" name="%{BKY_MYPROCEDURE_TITLE}" colour="%{BKY_MYPROCEDURE_HUE}"  custom="MYPROCEDURE"></category>';
 
 Blockly.Msg["MYPROCEDURE_TITLE"] = "myProcedure";
 Blockly.Msg["MYPROCEDURE_HUE"] = "120";
@@ -34,10 +34,9 @@ Blockly.JavaScript['test'] = function(block) {
 
 Blockly.myProcedure.flyoutCategory=function(workspace){
 	var categoryBlocks = [];
+	var blocksNAME = [""];
 	categoryBlocks.push(Blockly.Xml.textToDom('<block xmlns="https://developers.google.com/blockly/xml" type="test"><field name="NAME"></field></block>'));
 	
-	var blocksNAME = [""];
-
 	var blocks = workspace.getBlocksByType("test", true);
 	for (var i=0;i<blocks.length;i++){
 		var value = blocks[i].getFieldValue("NAME");
