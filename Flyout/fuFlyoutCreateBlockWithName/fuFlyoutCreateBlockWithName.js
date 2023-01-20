@@ -4,11 +4,9 @@ Last Update Time : 1/20/2023 00:00 (Taiwan Standard Time)
 Author: ChungYi Fu, Taiwan
 https://github.com/fustyles
 https://www.facebook.com/francefu/
-
-
 */
 
-var catMyProcedure ='<category id="catMyProcedure" name="%{BKY_MYPROCEDURE_TITLE}" colour="%{BKY_MYPROCEDURE_HUE}"  custom="MYPROCEDURE"></category>';
+// <category id="catMyProcedure" name="%{BKY_MYPROCEDURE_TITLE}" colour="%{BKY_MYPROCEDURE_HUE}"  custom="MYPROCEDURE"></category>
 
 Blockly.Msg["MYPROCEDURE_TITLE"] = "myProcedure";
 Blockly.Msg["MYPROCEDURE_HUE"] = "120";
