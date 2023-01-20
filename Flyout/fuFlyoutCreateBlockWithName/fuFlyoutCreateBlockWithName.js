@@ -38,7 +38,7 @@ Blockly.myProcedure.flyoutCategory=function(workspace){
 	var blocks = workspace.getBlocksByType("test", true);
 	for (var i=0;i<blocks.length;i++){
 		var value = blocks[i].getFieldValue("NAME");
-		if (value!=""&&blocksNAME.indexOf(value)==-1) {
+		if (blocksNAME.indexOf(value)==-1) {
 			blocksNAME.push(value);
 			categoryBlocks.push(Blockly.Xml.textToDom('<block xmlns="https://developers.google.com/blockly/xml" type="test"><field name="NAME">'+value+'</field></block>'));
 		}
