@@ -11,9 +11,9 @@ https://www.facebook.com/francefu/
 Blockly.Msg["MYPROCEDURE_TITLE"] = "myProcedure";
 Blockly.Msg["MYPROCEDURE_HUE"] = "120";
 
-Blockly.myProcedure={};
-Blockly.myProcedure_CATEGORY_NAME="MYPROCEDURE";
-Blockly.myProcedure.NAME_TYPE=Blockly.myProcedure_CATEGORY_NAME;
+Blockly.myProcedure = {};
+Blockly.myProcedure_CATEGORY_NAME = "MYPROCEDURE";
+Blockly.myProcedure.NAME_TYPE = Blockly.myProcedure_CATEGORY_NAME;
 
 Blockly.Blocks['test'] = {
   init: function() {
