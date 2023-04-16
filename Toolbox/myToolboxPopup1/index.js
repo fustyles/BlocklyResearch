@@ -60,6 +60,8 @@ function init() {
         mouse_cursor.screenY = e.screenY;  		
     }
 	
+	hideFlyout();
+	
 	var newBlock = null;
 	var timerDelete;
 	var timerDeleteGroup = "";
