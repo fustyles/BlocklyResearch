@@ -7,4 +7,4 @@ SPDX-License-Identifier: Apache-2.0<br>
 
 Example page<br>
 https://fustyles.github.io/webduino/LinkIt7697/test_myContinuousToolbox1/index.html<br><br>
-<img src="https://fustyles.github.io/webduino/LinkIt7697/test_myContinuousToolbox1/index.jpgg">
+<img src="https://fustyles.github.io/webduino/LinkIt7697/test_myContinuousToolbox1/index.jpg">
