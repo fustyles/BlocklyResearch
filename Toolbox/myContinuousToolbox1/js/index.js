@@ -1,4 +1,3 @@
-//*************** toolbox initial ******************	
 let workspace = null;
 
 function start() {
