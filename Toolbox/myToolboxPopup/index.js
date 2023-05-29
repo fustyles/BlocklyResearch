@@ -14,7 +14,7 @@
 /**
  * @fileoverview Toolbox Popup
  * @author https://www.facebook.com/francefu/
- * @Update 5/27/2023 09:00 (Taiwan Standard Time)
+ * @Update 5/29/2023 21:30 (Taiwan Standard Time)
  */
 function init() {
     // Inject primary workspace.
@@ -69,14 +69,15 @@ function init() {
         mouse_cursor.screenY = e.screenY;
 
         if (newBlock) {
-            try { 
+            try {
                 document.createEvent("TouchEvent");
-				
+
                 newBlock.select();
-            } catch(e) { 
+            } catch (e) {
                 var blockToMouseXY = getBlockToMouseXY(newBlock);
-                newBlock.moveBy(blockToMouseXY.x-10, blockToMouseXY.y-10);
-            } 
+                newBlock.moveBy(blockToMouseXY.x - 10, blockToMouseXY.y - 10);
+            }
+            newBlock.setEnabled(true);
             newBlock = null;
             primaryWorkspace.getAudioManager().play("click");
         }
@@ -106,6 +107,7 @@ function init() {
                 var id = Blockly.Xml.appendDomToWorkspace(block, secondaryWorkspace);
                 newBlock = secondaryWorkspace.getBlockById(id[0]);
                 if (newBlock) {
+                    newBlock.setEnabled(false);
                     var blockToCenterXY = getBlockToCenterXY(newBlock);
                     newBlock.moveBy(blockToCenterXY.x, blockToCenterXY.y);
                     newBlock.bringToFront();
