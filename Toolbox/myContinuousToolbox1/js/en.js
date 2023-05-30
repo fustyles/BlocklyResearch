@@ -17,6 +17,7 @@
 
 var Blockly = Blockly || { Msg: Object.create(null) };
 
+// Continuous Toolbox
 Blockly.Msg["TOOLBOX_NAME"] = "TOOLBOX";
 Blockly.Msg["LOGIC_NAME"] = "LOGIC";
 Blockly.Msg["LOOPS_NAME"] = "LOOPS";
@@ -27,6 +28,7 @@ Blockly.Msg["COLOUR_NAME"] = "COLOUR";
 Blockly.Msg["VARIABLES_NAME"] = "VARIABLES";
 Blockly.Msg["PROCEDURES_NAME"] = "PROCEDURES";
 
+  
 Blockly.Msg["ADD_COMMENT"] = "Add Comment";
 Blockly.Msg["CANNOT_DELETE_VARIABLE_PROCEDURE"] = "Can't delete the variable '%1' because it's part of the definition of the function '%2'";
 Blockly.Msg["CHANGE_VALUE_TITLE"] = "Change value:";
