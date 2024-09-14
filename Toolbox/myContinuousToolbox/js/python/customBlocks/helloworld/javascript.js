@@ -1,6 +1,6 @@
 'use strict';
 
-Blockly.Python['test1'] = function(block) {
+Blockly.Python.forBlock['test1'] = function(block) {
 	Blockly.Python.definitions_['messagebox'] =	'import tkinter as tk\n'
 							+'from tkinter import messagebox\n'
 							+'root = tk.Tk()\nroot.withdraw()';
@@ -9,7 +9,7 @@ Blockly.Python['test1'] = function(block) {
 	return code;
 };
 
-Blockly.Python['test2'] = function(block) {
+Blockly.Python.forBlock['test2'] = function(block) {
 	var code = "'World Peace'";
-	return [code, Blockly.Python.ORDER_NONE];
+	return [code, Blockly.Python.ORDER_ATOMIC];
 };	

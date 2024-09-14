@@ -24,13 +24,14 @@ https://www.facebook.com/francefu
 				break;
 			}
 		}
-		document.write("\<script src='js/blockly.min.js'\>\<\/script>");	
+		document.write("\<script src='js/blockly_compressed.js'\>\<\/script>");	
+		document.write("\<script src='js/blocks_compressed.js'\>\<\/script>");		
+		document.write("\<script src='js/"+core+"/"+core+"_compressed.js'\>\<\/script>");
 		document.write("\<script src='js/custom_category_es6.js'\>\<\/script>");
 		document.write("\<script src='js/toolbox_label_es6.js'\>\<\/script>");
 		document.write("\<script src='js/toolbox.js'\>\<\/script>");	
-		document.write("\<script src='js/"+core+"/"+core+"_compressed.js'\>\<\/script>");
 		document.write("\<script src='js/"+core+"/"+core+"_function.js'\>\<\/script>");
-		document.write("\<script src='js/"+core+"/"+core+"_customBlocks.js'\>\<\/script>");
+		document.write("\<script src='js/"+core+"/"+core+"_customBlocks.js'\>\<\/script>");		
 
 		var lang = langlist[0];;
 		for (var i=0;i<langlist.length;i++) {

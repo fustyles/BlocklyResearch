@@ -1,6 +1,6 @@
 'use strict';
 
-Blockly.Blocks['test1'] = {
+const test1 = {
   init: function() {
 	this.appendDummyInput()
 		.appendField(Blockly.Msg["HELLOWORLD_MSG"]);
@@ -12,8 +12,9 @@ Blockly.Blocks['test1'] = {
 	this.setColour(Blockly.Msg["HELLOWORLD_HUE"]);
   }
 };
+Blockly.common.defineBlocks({test1: test1});
 
-Blockly.Blocks['test2'] = {
+const test2 = {
   init: function() {
 	this.appendDummyInput()
 		.appendField(Blockly.Msg["HELLOWORLD_GET"]);
@@ -22,8 +23,9 @@ Blockly.Blocks['test2'] = {
 	this.setColour(Blockly.Msg["HELLOWORLD_HUE"]);
   }
 };
+Blockly.common.defineBlocks({test2: test2});
 
-Blockly.Blocks['test3'] = {
+const test3 = {
   init: function() {
 	this.appendDummyInput()
 		.appendField(Blockly.Msg["HELLOWORLD_DELAY"]);
@@ -35,3 +37,4 @@ Blockly.Blocks['test3'] = {
 	this.setColour(Blockly.Msg["HELLOWORLD_HUE"]);
   }
 };
+Blockly.common.defineBlocks({test3: test3});
