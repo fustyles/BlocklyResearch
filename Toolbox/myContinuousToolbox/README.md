@@ -7,8 +7,8 @@ SPDX-License-Identifier: Apache-2.0<br>
 
 
 JavaScript<br>
-https://fustyles.github.io/webduino/LinkIt7697/test_myContinuousToolbox/index.html?lang=en&core=javascript<br><br>
+https://fustyles.github.io/BlocklyResearch/Toolbox/myContinuousToolbox/index.html?lang=en&core=javascript<br><br>
 Python<br>
-https://fustyles.github.io/webduino/LinkIt7697/test_myContinuousToolbox/index.html?lang=en&core=python<br><br>
+https://fustyles.github.io/BlocklyResearch/Toolbox/myContinuousToolbox/index.html?lang=en&core=python<br><br>
 SpBlockly V2 (NW.js including Arduino, Python, Javascript, Blockly Developer Tools, SpBlockly Tools)<br>
 https://drive.google.com/drive/folders/1O_459M_GvvxCjXrQQq7EkTpfF2WIIhf5?usp=drive_link<br><br>
