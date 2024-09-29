@@ -505,29 +505,44 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 	Blockly.Msg["WORKSPACE_SORRY"] = "This feature requires a Node.js environment and a Python installation.";
 	function workspaceExecutePY() {
 		if (typeof require !== "undefined") {
+			
+			const fs = require('fs');
 			var filePath = "temp.py";
-			const fs = require('fs'); 
-			var code = Blockly.Python.workspaceToCode(demoWorkspace); 
+			var code = Blockly.Python.workspaceToCode(workspace);
+			
+			var showWindow = (code.indexOf("input(")!=-1)?"start ":"";
+			var closeWindow = (code.indexOf("input(")!=-1)?"\nprint()\nprint()\nprint()\ncloseWindow = input('Press Enter to exit')\nexit(0)":"";
+			code += closeWindow;
+			
 			fs.writeFile(filePath, code, (err) => { 
 				if (err) { 
 					console.log(err);
 				} else {
+					var message = "";
 					
 					var exec = require('child_process').exec;
-					var cmd = '';
-					var res = exec('python '+filePath+' '+cmd);	
+					 
+					const Path = require('path')
+					if (fs.existsSync('python-'+python+'\\App\\Python\\python.exe')&&!pythonEnvironment)
+						var res = exec(showWindow + 'python-'+python+'\\App\\Python\\python '+filePath, {encoding: 'arraybuffer'});
+					else
+						var res = exec(showWindow + 'py '+filePath, {encoding: 'arraybuffer'});
 					
+					var iconv = require('iconv-lite');
 					
 					res.stdout.on('data', function(data) {
-						console.log(data);
+						data = iconv.decode(data, 'big5');
+						message += data.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\n/g,"<br>").replace(/ /g,"&ensp;");
+						console.log(message);						
 					});
 
 					res.stderr.on('data', function(data) {
-						console.log(data);
+						data = iconv.decode(data, 'big5');
+						message += data.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\n/g,"<br>").replace(/ /g,"&ensp;");
+						console.log(message);						
 					});
 
 					res.on('exit', function(code, signal) {
-						//console.log("exit");
 					});						
 				}
 			}); 			
