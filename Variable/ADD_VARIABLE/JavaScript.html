@@ -10,14 +10,15 @@ https://fustyles.github.io/webduino/demoBlockly_python.html
 
 -->
 
-<!DOCTYPE PY>
+
+<!DOCTYPE HTML>
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Demo Blockly (PYTHON)</title>
+  <title>Demo Blockly (JavaScript)</title>
 	<script src="js/blockly_compressed.js"></script>
 	<script src="js/blocks_compressed.js"></script>
-	<script src="js/python_compressed.js"></script>
+	<script src="js/javascript_compressed.js"></script>
 	<script src="js/en.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>	
 </head>
@@ -66,21 +67,19 @@ https://fustyles.github.io/webduino/demoBlockly_python.html
 
 <script>
 	
-	<!-- 工具箱自訂積木產出程式碼內容(Python.js) -->
+	<!-- 工具箱自訂積木產出程式碼內容(javascript.js) -->
 
-	python.pythonGenerator.forBlock['test1'] = function(block, generator) {
-		python.pythonGenerator.definitions_['messagebox'] =	'import tkinter as tk\n'
-								+'from tkinter import messagebox\n'
-								+'root = tk.Tk()\nroot.withdraw()';
-								
-		var message = generator.valueToCode(block, 'message', python.Order.ATOMIC);
-		var code = "messagebox.showwarning('Message Box'," + message + ")\n";
+	javascript.javascriptGenerator.forBlock['test1'] = function(block, generator) {
+		var message = generator.valueToCode(block, 'message', javascript.Order.ATOMIC);
+		var code = 'alert(' + message + ');\n';
 		return code;
 	};
 	
-	python.pythonGenerator.forBlock['test2'] = function(block, generator) {
-		var code = "'World Peace'";
-		return [code, python.Order.NONE];
+	javascript.javascriptGenerator.forBlock['test2'] = function(block, generator) {
+		javascript.javascriptGenerator.definitions_['messagebox'] = 'var message = "World Peace";\n';
+		
+		var code = "message";
+		return [code, javascript.Order.NONE];
 	};	
 	
 </script>
@@ -99,6 +98,8 @@ https://fustyles.github.io/webduino/demoBlockly_python.html
 	Blockly.Msg["TEXTS_HUE"] = "160";
 	Blockly.Msg["LISTS_NAME"] = "LISTS";
 	Blockly.Msg["LISTS_HUE"] = "260";
+	Blockly.Msg["COLOUR_NAME"] = "COLOUR";
+	Blockly.Msg["COLOUR_HUE"] = "20";
 	Blockly.Msg["VARIABLES_NAME"] = "VARIABLES";
 	Blockly.Msg["VARIABLES_HUE"] = "330";
 	Blockly.Msg["PROCEDURES_NAME"] = "PROCEDURES";
@@ -386,6 +387,44 @@ https://fustyles.github.io/webduino/demoBlockly_python.html
 	+   '<block type="lists_sort"></block>'
 	+   '<block type="lists_reverse"></block>'
 	+ '</category>'
+	+ '<category name="%{BKY_COLOUR_NAME}" colour="%{BKY_COLOUR_HUE}">'
+	+   '<block type="colour_picker"></block>'
+	+   '<block type="colour_random"></block>'
+	+   '<block type="colour_rgb">'
+	+     '<value name="RED">'
+	+       '<shadow type="math_number">'
+	+         '<field name="NUM">100</field>'
+	+       '</shadow>'
+	+     '</value>'
+	+     '<value name="GREEN">'
+	+       '<shadow type="math_number">'
+	+         '<field name="NUM">50</field>'
+	+       '</shadow>'
+	+     '</value>'
+	+     '<value name="BLUE">'
+	+       '<shadow type="math_number">'
+	+         '<field name="NUM">0</field>'
+	+       '</shadow>'
+	+     '</value>'
+	+   '</block>'
+	+   '<block type="colour_blend">'
+	+     '<value name="COLOUR1">'
+	+       '<shadow type="colour_picker">'
+	+         '<field name="COLOUR">#ff0000</field>'
+	+       '</shadow>'
+	+     '</value>'
+	+     '<value name="COLOUR2">'
+	+       '<shadow type="colour_picker">'
+	+         '<field name="COLOUR">#3333ff</field>'
+	+       '</shadow>'
+	+     '</value>'
+	+     '<value name="RATIO">'
+	+       '<shadow type="math_number">'
+	+         '<field name="NUM">0.5</field>'
+	+       '</shadow>'
+	+     '</value>'
+	+   '</block>'
+	+ '</category>'
 	+ '<sep></sep>'
 	+ '<category name="%{BKY_VARIABLES_NAME}" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>'
 	+ '<category name="%{BKY_PROCEDURES_NAME}" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>';
@@ -424,7 +463,7 @@ https://fustyles.github.io/webduino/demoBlockly_python.html
 				<field name="TEXT">Hello World</field>
 			</block>
 		</value> 		
-	</block>
+	</block>	
 </xml>
 
 <script>	
@@ -463,11 +502,11 @@ https://fustyles.github.io/webduino/demoBlockly_python.html
 		Blockly.getMainWorkspace().clear();
 		Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'), demoWorkspace);
 	}
-	//startBlocks();
+	startBlocks();
 
 	//監聽工作區改變輸出程式碼
 	function onWorkspaceChanged(event) {
-		var code = Blockly.Python.workspaceToCode(demoWorkspace);
+		var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
 		console.clear();
 		console.log(code);
 	}
@@ -475,7 +514,7 @@ https://fustyles.github.io/webduino/demoBlockly_python.html
 
 	//執行工作區程式碼
 	function runCode() {
-		var code = Blockly.Python.workspaceToCode(demoWorkspace);
+		var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
 		try {
 			eval(code);
 		} catch (e) {
@@ -483,14 +522,26 @@ https://fustyles.github.io/webduino/demoBlockly_python.html
 		}
 	}
 	
-	//工作區匯出PY檔案
-	function workspaceExportToPY() {
+	//工作區匯出網頁HTML檔案
+	function workspaceExportToHTML() {
 		  try {
-			var code = Blockly.Python.workspaceToCode(demoWorkspace);
+			var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+			var html ='<!DOCTYPE HTML>\n' +
+					  '<html>\n' +
+					  '<head>\n' +
+					  '  <meta charset="utf-8">\n' +
+					  '  <title>Demo Blockly</title>\n' +
+					  '<\/head>\n' +
+					  '<body>\n' +
+					  '<script>\n';
+			html    +=code;
+			html    +='<\/script>\n' +			
+					  '<\/body>\n' +
+					  '<\/html>';
 					
 			var link = document.createElement('a');
-			link.download="test.py";
-			link.href="data:application/octet-stream;utf-8," + encodeURIComponent(code);
+			link.download="index.html";
+			link.href="data:application/octet-stream;utf-8," + encodeURIComponent(html);
 			document.body.appendChild(link);
 			link.click();
 			link.remove();
@@ -498,42 +549,7 @@ https://fustyles.github.io/webduino/demoBlockly_python.html
 			window.location.href="data:application/octet-stream;utf-8," + encodeURIComponent(xml);
 			alert(e);
 		  }		
-	}
-
-	//工作區執行程式碼
-	Blockly.Msg["WORKSPACE_SORRY"] = "This feature requires a Node.js environment and a Python installation.";
-	function workspaceExecutePY() {
-		if (typeof require !== "undefined") {
-			var filePath = "temp.py";
-			const fs = require('fs'); 
-			var code = Blockly.Python.workspaceToCode(demoWorkspace); 
-			fs.writeFile(filePath, code, (err) => { 
-				if (err) { 
-					console.log(err);
-				} else {
-					
-					var exec = require('child_process').exec;
-					var cmd = '';
-					var res = exec('python '+filePath+' '+cmd);	
-					
-					
-					res.stdout.on('data', function(data) {
-						console.log(data);
-					});
-
-					res.stderr.on('data', function(data) {
-						console.log(data);
-					});
-
-					res.on('exit', function(code, signal) {
-						//console.log("exit");
-					});						
-				}
-			}); 			
-		}
-		else
-			alert(Blockly.Msg["WORKSPACE_SORRY"]);
-	}
+	}	
 
 	//工作區匯出積木結構XML檔案
 	function workspaceExportToXML() {
@@ -658,51 +674,51 @@ https://fustyles.github.io/webduino/demoBlockly_python.html
 	}
 	registerWorkspaceBlocksImportFromXML();
 	
-	//新增工作區功能選單 匯出PYTHON檔
-	Blockly.Msg["WORKSPACE_BLOCKS_EXPORT_PY_MSG"] = "Export Workspace as PY File";
-	function registerWorkspaceBlocksExportToPY() {
-	  if (Blockly.ContextMenuRegistry.registry.getItem('workspace_blocks_export_py')) {
+	//新增工作區功能選單 匯出網頁HTML檔
+	Blockly.Msg["WORKSPACE_BLOCKS_EXPORT_HTML_MSG"] = "Export Workspace as HTML File";
+	function registerWorkspaceBlocksExportToHTML() {
+	  if (Blockly.ContextMenuRegistry.registry.getItem('workspace_blocks_export_html')) {
 		return;
 	  }
-	  const workspaceBlocksExportToPY = {
+	  const workspaceBlocksExportToHTML = {
 		displayText: function(){
-			return Blockly.Msg["WORKSPACE_BLOCKS_EXPORT_PY_MSG"];
+			return Blockly.Msg["WORKSPACE_BLOCKS_EXPORT_HTML_MSG"];
 		},
 		preconditionFn: function(a) {
 			return 'enabled';
 		},
 		callback: function(a) {
-			workspaceExportToPY();
+			workspaceExportToHTML();
 		},
-		scopeType: Blockly.ContextMenuRegistry.ScopeType.WORKSPACE,id: 'workspace_blocks_export_py',
+		scopeType: Blockly.ContextMenuRegistry.ScopeType.WORKSPACE,id: 'workspace_blocks_export_html',
 		weight: 203,
 	  };
-	  Blockly.ContextMenuRegistry.registry.register(workspaceBlocksExportToPY);
+	  Blockly.ContextMenuRegistry.registry.register(workspaceBlocksExportToHTML);
 	}
-	registerWorkspaceBlocksExportToPY();
-	
-	//新增工作區功能選單 匯出PYTHON檔並執行
-	Blockly.Msg["WORKSPACE_BLOCKS_EXECUTE_PY_MSG"] = "Run the Code";
-	function registerWorkspaceBlocksExecutePY() {
-	  if (Blockly.ContextMenuRegistry.registry.getItem('workspace_blocks_execute_py')) {
+	registerWorkspaceBlocksExportToHTML();
+
+	//新增工作區功能選單 執行積木程式碼
+	Blockly.Msg["WORKSPACE_RUNCODE"] = "Run the Code";
+	function registerRunCode() {
+	  if (Blockly.ContextMenuRegistry.registry.getItem('workspace_run_code')) {
 		return;
 	  }
-	  const workspaceBlocksExecutePY = {
+	  const workspaceRunCode = {
 		displayText: function(){
-			return Blockly.Msg["WORKSPACE_BLOCKS_EXECUTE_PY_MSG"];
+			return Blockly.Msg["WORKSPACE_RUNCODE"];
 		},
 		preconditionFn: function(a) {
 			return 'enabled';
 		},
 		callback: function(a) {
-			workspaceExecutePY();
+			runCode();
 		},
-		scopeType: Blockly.ContextMenuRegistry.ScopeType.WORKSPACE,id: 'workspace_blocks_execute_py',
+		scopeType: Blockly.ContextMenuRegistry.ScopeType.WORKSPACE,id: 'workspace_run_code',
 		weight: 204,
 	  };
-	  Blockly.ContextMenuRegistry.registry.register(workspaceBlocksExecutePY);
-	}
-	registerWorkspaceBlocksExecutePY();	
+	  Blockly.ContextMenuRegistry.registry.register(workspaceRunCode);
+	} 
+	registerRunCode();
 
 	//工作區範圍最大化
 	function workspaceResize() {
