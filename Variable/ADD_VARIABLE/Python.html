@@ -506,7 +506,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 	function workspaceExecutePY() {
 		if (typeof require !== "undefined") {
 			var code = Blockly.Python.workspaceToCode(workspace);
-			var WindowCloseManually = (code.indexOf("input(")!=-1)?"start ":"";
+			var Prefix = (code.indexOf("input(")!=-1)?"start ":"";
 			var WindowCloseAuto = (code.indexOf("input(")!=-1)?"\nprint()\nprint()\nprint()\ncloseWindow = input('Press Enter to exit')\nexit(0)":"";
 			code += WindowCloseAuto;
 			
@@ -520,9 +520,9 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 					const Path = require('path');
 					var python = "3.10.0";
 					if (fs.existsSync('python-'+python+'\\App\\Python\\python.exe'))
-						var res = exec(WindowCloseManually + 'python-'+python+'\\App\\Python\\python '+filePath, {encoding: 'arraybuffer'});   //Portable
+						var res = exec(Prefix + 'python-'+python+'\\App\\Python\\python '+filePath, {encoding: 'arraybuffer'});   //Portable
 					else
-						var res = exec(WindowCloseManually + 'py '+filePath, {encoding: 'arraybuffer'});    //Local
+						var res = exec(Prefix + 'py '+filePath, {encoding: 'arraybuffer'});    //Local
 					
 					var iconv = require('iconv-lite');
 					var message = "";
