@@ -527,14 +527,14 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 					var message = "";
 					res.stdout.on('data', function(data) {
 						data = iconv.decode(data, 'big5');
+						console.log(data);
 						message += data.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\n/g,"<br>").replace(/ /g,"&ensp;");
-						console.log(message);						
 					});
 
 					res.stderr.on('data', function(data) {
 						data = iconv.decode(data, 'big5');
+						console.log(data);
 						message += data.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\n/g,"<br>").replace(/ /g,"&ensp;");
-						console.log(message);						
 					});
 
 					res.on('exit', function(code, signal) {
