@@ -1550,7 +1550,7 @@ static dropdownCreate() {
     c.push([$.Msg$$module$build$src$core$msg.RENAME_VARIABLE, RENAME_VARIABLE_ID$$module$build$src$core$internal_constants]);
     $.Msg$$module$build$src$core$msg.DELETE_VARIABLE && c.push([$.Msg$$module$build$src$core$msg.DELETE_VARIABLE.replace("%1", a), DELETE_VARIABLE_ID$$module$build$src$core$internal_constants]);
     $.Msg$$module$build$src$core$msg.ADD_VARIABLE && c.push([$.Msg$$module$build$src$core$msg.ADD_VARIABLE, ADD_VARIABLE_ID$$module$build$src$core$internal_constants]);
-	return c
+    return c
 }
 
 };register$$module$build$src$core$field_registry("field_variable",FieldVariable$$module$build$src$core$field_variable);var module$build$src$core$field_variable={};
