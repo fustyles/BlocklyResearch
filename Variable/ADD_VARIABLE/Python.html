@@ -523,7 +523,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 					var exec = require('child_process').exec;
 					 
 					const Path = require('path')
-					if (fs.existsSync('python-'+python+'\\App\\Python\\python.exe')&&!pythonEnvironment)
+					if (fs.existsSync('python-'+python+'\\App\\Python\\python.exe'))
 						var res = exec(showWindow + 'python-'+python+'\\App\\Python\\python '+filePath, {encoding: 'arraybuffer'});
 					else
 						var res = exec(showWindow + 'py '+filePath, {encoding: 'arraybuffer'});
