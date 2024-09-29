@@ -505,15 +505,13 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 	Blockly.Msg["WORKSPACE_SORRY"] = "This feature requires a Node.js environment and a Python installation.";
 	function workspaceExecutePY() {
 		if (typeof require !== "undefined") {
+			var code = Blockly.Python.workspaceToCode(workspace);
+			var WindowCloseManually = (code.indexOf("input(")!=-1)?"start ":"";
+			var WindowCloseAuto = (code.indexOf("input(")!=-1)?"\nprint()\nprint()\nprint()\ncloseWindow = input('Press Enter to exit')\nexit(0)":"";
+			code += WindowCloseAuto;
 			
 			const fs = require('fs');
 			var filePath = "temp.py";
-			var code = Blockly.Python.workspaceToCode(workspace);
-			
-			var showWindow = (code.indexOf("input(")!=-1)?"start ":"";
-			var closeWindow = (code.indexOf("input(")!=-1)?"\nprint()\nprint()\nprint()\ncloseWindow = input('Press Enter to exit')\nexit(0)":"";
-			code += closeWindow;
-			
 			fs.writeFile(filePath, code, (err) => { 
 				if (err) { 
 					console.log(err);
@@ -522,9 +520,9 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 					const Path = require('path');
 					var python = "3.10.0";
 					if (fs.existsSync('python-'+python+'\\App\\Python\\python.exe'))
-						var res = exec(showWindow + 'python-'+python+'\\App\\Python\\python '+filePath, {encoding: 'arraybuffer'});   //Portable
+						var res = exec(WindowCloseManually + 'python-'+python+'\\App\\Python\\python '+filePath, {encoding: 'arraybuffer'});   //Portable
 					else
-						var res = exec(showWindow + 'py '+filePath, {encoding: 'arraybuffer'});    //Local
+						var res = exec(WindowCloseManually + 'py '+filePath, {encoding: 'arraybuffer'});    //Local
 					
 					var iconv = require('iconv-lite');
 					var message = "";
