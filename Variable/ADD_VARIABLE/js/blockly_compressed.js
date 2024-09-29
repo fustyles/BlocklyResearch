@@ -1566,6 +1566,11 @@ typeof a?"TRUE"===a:!!a}static fromJson(a){return new this(a.checked,void 0,a)}}
 
 
 
+
+
+
+
+
 var FieldColour$$module$build$src$core$field_colour=class extends Field$$module$build$src$core$field{constructor(a,b,c){super(Field$$module$build$src$core$field.SKIP_SETUP);this.highlightedIndex=this.picker=null;this.boundEvents=[];this.SERIALIZABLE=!0;this.CURSOR="default";this.isDirty_=!1;this.titles=this.colours=null;this.columns=0;a!==Field$$module$build$src$core$field.SKIP_SETUP&&(c&&this.configure_(c),this.setValue(a),b&&this.setValidator(b))}configure_(a){super.configure_(a);a.colourOptions&&
 (this.colours=a.colourOptions);a.colourTitles&&(this.titles=a.colourTitles);a.columns&&(this.columns=a.columns)}initView(){this.size_=new Size$$module$build$src$core$utils$size(this.getConstants().FIELD_COLOUR_DEFAULT_WIDTH,this.getConstants().FIELD_COLOUR_DEFAULT_HEIGHT);this.getConstants().FIELD_COLOUR_FULL_BLOCK?this.sourceBlock_ instanceof BlockSvg$$module$build$src$core$block_svg&&(this.clickTarget_=this.sourceBlock_.getSvgRoot()):(this.createBorderRect_(),this.getBorderRect().style.fillOpacity=
 "1")}applyColour(){this.getConstants().FIELD_COLOUR_FULL_BLOCK?this.sourceBlock_ instanceof BlockSvg$$module$build$src$core$block_svg&&(this.sourceBlock_.pathObject.svgPath.setAttribute("fill",this.getValue()),this.sourceBlock_.pathObject.svgPath.setAttribute("stroke","#fff")):this.borderRect_&&(this.borderRect_.style.fill=this.getValue())}doClassValidation_(a){return"string"!==typeof a?null:parse$$module$build$src$core$utils$colour(a)}doValueUpdate_(a){this.value_=a;this.borderRect_?this.borderRect_.style.fill=
@@ -1582,6 +1587,12 @@ State$$module$build$src$core$utils$aria.SELECTED,b[g]===d);h.style.backgroundCol
 FieldColour$$module$build$src$core$field_colour.COLOURS="#ffffff #cccccc #c0c0c0 #999999 #666666 #333333 #000000 #ffcccc #ff6666 #ff0000 #cc0000 #990000 #660000 #330000 #ffcc99 #ff9966 #ff9900 #ff6600 #cc6600 #993300 #663300 #ffff99 #ffff66 #ffcc66 #ffcc33 #cc9933 #996633 #663333 #ffffcc #ffff33 #ffff00 #ffcc00 #999900 #666600 #333300 #99ff99 #66ff99 #33ff33 #33cc00 #009900 #006600 #003300 #99ffff #33ffff #66cccc #00cccc #339999 #336666 #003333 #ccffff #66ffff #33ccff #3366ff #3333ff #000099 #000066 #ccccff #9999ff #6666cc #6633ff #6600cc #333399 #330099 #ffccff #ff99ff #cc66cc #cc33cc #993399 #663366 #330033".split(" ");
 FieldColour$$module$build$src$core$field_colour.TITLES=[];FieldColour$$module$build$src$core$field_colour.COLUMNS=7;FieldColour$$module$build$src$core$field_colour.prototype.DEFAULT_VALUE=FieldColour$$module$build$src$core$field_colour.COLOURS[0];register$$module$build$src$core$field_registry("field_colour",FieldColour$$module$build$src$core$field_colour);register$$module$build$src$core$css("\n.blocklyColourTable {\n  border-collapse: collapse;\n  display: block;\n  outline: none;\n  padding: 1px;\n}\n\n.blocklyColourTable>tr>td {\n  border: 0.5px solid #888;\n  box-sizing: border-box;\n  cursor: pointer;\n  display: inline-block;\n  height: 20px;\n  padding: 0;\n  width: 20px;\n}\n\n.blocklyColourTable>tr>td.blocklyColourHighlighted {\n  border-color: #eee;\n  box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.3);\n  position: relative;\n}\n\n.blocklyColourSelected, .blocklyColourSelected:hover {\n  border-color: #eee !important;\n  outline: 1px solid #333;\n  position: relative;\n}\n");
 var module$build$src$core$field_colour={};module$build$src$core$field_colour.FieldColour=FieldColour$$module$build$src$core$field_colour;
+
+
+
+
+
+
 
 
 

@@ -12,6 +12,10 @@
   }
 }(this, function(__parent__) {
 var $=__parent__.__namespace__;
+
+
+
+
 var colour_picker$$module$build$src$generators$javascript$colour=function(a,b){return[b.quote_(a.getFieldValue("COLOUR")),Order$$module$build$src$generators$javascript$javascript_generator.ATOMIC]},colour_random$$module$build$src$generators$javascript$colour=function(a,b){return[b.provideFunction_("colourRandom",`
 function ${b.FUNCTION_NAME_PLACEHOLDER_}() {
   var num = Math.floor(Math.random() * Math.pow(2, 24));
@@ -46,7 +50,12 @@ function ${b.FUNCTION_NAME_PLACEHOLDER_}(c1, c2, ratio) {
   b = ('0' + (b || 0).toString(16)).slice(-2);
   return '#' + r + g + b;
 }
-`)+"("+c+", "+d+", "+a+")",Order$$module$build$src$generators$javascript$javascript_generator.FUNCTION_CALL]},lists_create_empty$$module$build$src$generators$javascript$lists=function(a,b){return["[]",Order$$module$build$src$generators$javascript$javascript_generator.ATOMIC]},lists_create_with$$module$build$src$generators$javascript$lists=function(a,b){const c=Array(a.itemCount_);for(let d=0;d<a.itemCount_;d++)c[d]=b.valueToCode(a,"ADD"+d,Order$$module$build$src$generators$javascript$javascript_generator.NONE)||"null";return["["+c.join(", ")+"]",Order$$module$build$src$generators$javascript$javascript_generator.ATOMIC]},
+`)+"("+c+", "+d+", "+a+")",Order$$module$build$src$generators$javascript$javascript_generator.FUNCTION_CALL]}
+
+
+
+
+,lists_create_empty$$module$build$src$generators$javascript$lists=function(a,b){return["[]",Order$$module$build$src$generators$javascript$javascript_generator.ATOMIC]},lists_create_with$$module$build$src$generators$javascript$lists=function(a,b){const c=Array(a.itemCount_);for(let d=0;d<a.itemCount_;d++)c[d]=b.valueToCode(a,"ADD"+d,Order$$module$build$src$generators$javascript$javascript_generator.NONE)||"null";return["["+c.join(", ")+"]",Order$$module$build$src$generators$javascript$javascript_generator.ATOMIC]},
 lists_repeat$$module$build$src$generators$javascript$lists=function(a,b){const c=b.provideFunction_("listsRepeat",`
 function ${b.FUNCTION_NAME_PLACEHOLDER_}(value, n) {
   var array = [];
@@ -275,10 +284,16 @@ c&&!d)return a;if($.isNumber$$module$build$src$core$utils$string(a))return a=Str
 module$build$src$generators$javascript$javascript_generator.Order=Order$$module$build$src$generators$javascript$javascript_generator;
 
 
+
+
+
 var module$build$src$generators$javascript$colour={};
 module$build$src$generators$javascript$colour.colour_picker=colour_picker$$module$build$src$generators$javascript$colour;
 module$build$src$generators$javascript$colour.colour_random=colour_random$$module$build$src$generators$javascript$colour;
 module$build$src$generators$javascript$colour.colour_blend=colour_blend$$module$build$src$generators$javascript$colour;
+
+
+
 
 
 
@@ -302,7 +317,17 @@ module$build$src$generators$javascript$procedures.procedures_defnoreturn=procedu
 module$build$src$generators$javascript$text.text_changeCase=text_changeCase$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_charAt=text_charAt$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_count=text_count$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_getSubstring=text_getSubstring$$module$build$src$generators$javascript$text;
 module$build$src$generators$javascript$text.text_indexOf=text_indexOf$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_isEmpty=text_isEmpty$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_join=text_join$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_length=text_length$$module$build$src$generators$javascript$text;
 module$build$src$generators$javascript$text.text_print=text_print$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_prompt=text_prompt_ext$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_prompt_ext=text_prompt_ext$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_replace=text_replace$$module$build$src$generators$javascript$text;
-module$build$src$generators$javascript$text.text_reverse=text_reverse$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_trim=text_trim$$module$build$src$generators$javascript$text;var module$build$src$generators$javascript$variables={};module$build$src$generators$javascript$variables.variables_get=variables_get$$module$build$src$generators$javascript$variables;module$build$src$generators$javascript$variables.variables_set=variables_set$$module$build$src$generators$javascript$variables;var module$build$src$generators$javascript$variables_dynamic={};module$build$src$generators$javascript$variables_dynamic.variables_get_dynamic=variables_get$$module$build$src$generators$javascript$variables;module$build$src$generators$javascript$variables_dynamic.variables_set_dynamic=variables_set$$module$build$src$generators$javascript$variables;var javascriptGenerator$$module$build$src$generators$javascript=new JavascriptGenerator$$module$build$src$generators$javascript$javascript_generator,generators$$module$build$src$generators$javascript=Object.assign({},module$build$src$generators$javascript$colour,module$build$src$generators$javascript$lists,module$build$src$generators$javascript$logic,module$build$src$generators$javascript$loops,module$build$src$generators$javascript$math,module$build$src$generators$javascript$procedures,module$build$src$generators$javascript$text,module$build$src$generators$javascript$variables,
+module$build$src$generators$javascript$text.text_reverse=text_reverse$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_trim=text_trim$$module$build$src$generators$javascript$text;var module$build$src$generators$javascript$variables={};module$build$src$generators$javascript$variables.variables_get=variables_get$$module$build$src$generators$javascript$variables;module$build$src$generators$javascript$variables.variables_set=variables_set$$module$build$src$generators$javascript$variables;var module$build$src$generators$javascript$variables_dynamic={};module$build$src$generators$javascript$variables_dynamic.variables_get_dynamic=variables_get$$module$build$src$generators$javascript$variables;module$build$src$generators$javascript$variables_dynamic.variables_set_dynamic=variables_set$$module$build$src$generators$javascript$variables;var javascriptGenerator$$module$build$src$generators$javascript=new JavascriptGenerator$$module$build$src$generators$javascript$javascript_generator,generators$$module$build$src$generators$javascript=Object.assign({}
+
+
+
+
+,module$build$src$generators$javascript$colour
+
+
+
+
+,module$build$src$generators$javascript$lists,module$build$src$generators$javascript$logic,module$build$src$generators$javascript$loops,module$build$src$generators$javascript$math,module$build$src$generators$javascript$procedures,module$build$src$generators$javascript$text,module$build$src$generators$javascript$variables,
 module$build$src$generators$javascript$variables_dynamic);for(const a in generators$$module$build$src$generators$javascript)javascriptGenerator$$module$build$src$generators$javascript.forBlock[a]=generators$$module$build$src$generators$javascript[a];var module$build$src$generators$javascript={};module$build$src$generators$javascript.JavascriptGenerator=JavascriptGenerator$$module$build$src$generators$javascript$javascript_generator;module$build$src$generators$javascript.Order=Order$$module$build$src$generators$javascript$javascript_generator;
 module$build$src$generators$javascript.javascriptGenerator=javascriptGenerator$$module$build$src$generators$javascript;
 module$build$src$generators$javascript.__namespace__=$;

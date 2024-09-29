@@ -148,10 +148,14 @@ f.bumpNeighbours()),$.setGroup$$module$build$src$core$events$utils(!1))}this.pre
 
 
 
+
+
 var blocks$$module$build$src$blocks$colour=$.createBlockDefinitionsFromJsonArray$$module$build$src$core$common([{type:"colour_picker",message0:"%1",args0:[{type:"field_colour",name:"COLOUR",colour:"#ff0000"}],output:"Colour",helpUrl:"%{BKY_COLOUR_PICKER_HELPURL}",style:"colour_blocks",tooltip:"%{BKY_COLOUR_PICKER_TOOLTIP}",extensions:["parent_tooltip_when_inline"]},{type:"colour_random",message0:"%{BKY_COLOUR_RANDOM_TITLE}",output:"Colour",helpUrl:"%{BKY_COLOUR_RANDOM_HELPURL}",style:"colour_blocks",
 tooltip:"%{BKY_COLOUR_RANDOM_TOOLTIP}"},{type:"colour_blend",message0:"%{BKY_COLOUR_BLEND_TITLE} %{BKY_COLOUR_BLEND_COLOUR1} %1 %{BKY_COLOUR_BLEND_COLOUR2} %2 %{BKY_COLOUR_BLEND_RATIO} %3",
 args0:[{type:"input_value",name:"COLOUR1",check:"Colour",align:"RIGHT"},{type:"input_value",name:"COLOUR2",check:"Colour",align:"RIGHT"},{type:"input_value",name:"RATIO",check:"Number",align:"RIGHT"}],output:"Colour",helpUrl:"%{BKY_COLOUR_BLEND_HELPURL}",style:"colour_blocks",tooltip:"%{BKY_COLOUR_BLEND_TOOLTIP}"}])
 $.defineBlocks$$module$build$src$core$common(blocks$$module$build$src$blocks$colour);var module$build$src$blocks$colour={blocks:blocks$$module$build$src$blocks$colour};
+
+
 
 
 
@@ -196,7 +200,26 @@ style:"list_blocks",tooltip:"%{BKY_LISTS_SORT_TOOLTIP}",helpUrl:"%{BKY_LISTS_SOR
 blocks$$module$build$src$blocks$lists.lists_split={init:function(){const a=$.fromJson$$module$build$src$core$field_registry({type:"field_dropdown",options:[[$.Msg$$module$build$src$core$msg.LISTS_SPLIT_LIST_FROM_TEXT,"SPLIT"],[$.Msg$$module$build$src$core$msg.LISTS_SPLIT_TEXT_FROM_LIST,"JOIN"]]});if(!a)throw Error("field_dropdown not found");a.setValidator(b=>{this.updateType_(b)});this.setHelpUrl($.Msg$$module$build$src$core$msg.LISTS_SPLIT_HELPURL);this.setStyle("list_blocks");this.appendValueInput("INPUT").setCheck("String").appendField(a,
 "MODE");this.appendValueInput("DELIM").setCheck("String").appendField($.Msg$$module$build$src$core$msg.LISTS_SPLIT_WITH_DELIMITER);this.setInputsInline(!0);this.setOutput(!0,"Array");this.setTooltip(()=>{const b=this.getFieldValue("MODE");if("SPLIT"===b)return $.Msg$$module$build$src$core$msg.LISTS_SPLIT_TOOLTIP_SPLIT;if("JOIN"===b)return $.Msg$$module$build$src$core$msg.LISTS_SPLIT_TOOLTIP_JOIN;throw Error("Unknown mode: "+b);})},updateType_:function(a){if(this.getFieldValue("MODE")!==a){const b=
 this.getInput("INPUT").connection;b.setShadowDom(null);const c=b.targetBlock();c&&(b.disconnect(),c.isShadow()?c.dispose(!1):this.bumpNeighbours())}"SPLIT"===a?(this.outputConnection.setCheck("Array"),this.getInput("INPUT").setCheck("String")):(this.outputConnection.setCheck("String"),this.getInput("INPUT").setCheck("Array"))},mutationToDom:function(){const a=$.createElement$$module$build$src$core$utils$xml("mutation");a.setAttribute("mode",this.getFieldValue("MODE"));return a},domToMutation:function(a){this.updateType_(a.getAttribute("mode"))},
-saveExtraState:function(){return null},loadExtraState:function(){}};$.defineBlocks$$module$build$src$core$common(blocks$$module$build$src$blocks$lists);var module$build$src$blocks$lists={blocks:blocks$$module$build$src$blocks$lists};var blocks$$module$build$src$blocks$blocks=Object.assign({},blocks$$module$build$src$blocks$colour,blocks$$module$build$src$blocks$lists,blocks$$module$build$src$blocks$logic,blocks$$module$build$src$blocks$loops,blocks$$module$build$src$blocks$math,blocks$$module$build$src$blocks$procedures,blocks$$module$build$src$blocks$text,blocks$$module$build$src$blocks$variables,blocks$$module$build$src$blocks$variables_dynamic),module$build$src$blocks$blocks={blocks:blocks$$module$build$src$blocks$blocks,colour:module$build$src$blocks$colour,lists:module$build$src$blocks$lists,logic:module$build$src$blocks$logic,
+saveExtraState:function(){return null},loadExtraState:function(){}};$.defineBlocks$$module$build$src$core$common(blocks$$module$build$src$blocks$lists);var module$build$src$blocks$lists={blocks:blocks$$module$build$src$blocks$lists};var blocks$$module$build$src$blocks$blocks=Object.assign({}
+
+
+
+
+,blocks$$module$build$src$blocks$colour
+
+
+
+
+,blocks$$module$build$src$blocks$lists,blocks$$module$build$src$blocks$logic,blocks$$module$build$src$blocks$loops,blocks$$module$build$src$blocks$math,blocks$$module$build$src$blocks$procedures,blocks$$module$build$src$blocks$text,blocks$$module$build$src$blocks$variables,blocks$$module$build$src$blocks$variables_dynamic),module$build$src$blocks$blocks={blocks:blocks$$module$build$src$blocks$blocks
+
+
+
+
+,colour:module$build$src$blocks$colour
+
+
+
+,lists:module$build$src$blocks$lists,logic:module$build$src$blocks$logic,
 loops:module$build$src$blocks$loops,math:module$build$src$blocks$math,procedures:module$build$src$blocks$procedures,texts:module$build$src$blocks$text,variables:module$build$src$blocks$variables,variablesDynamic:module$build$src$blocks$variables_dynamic};
 module$build$src$blocks$blocks.__namespace__=$;
 return module$build$src$blocks$blocks;
