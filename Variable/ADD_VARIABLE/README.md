@@ -6,6 +6,6 @@ SPDX-License-Identifier: Apache-2.0<br>
 @author https://github.com/fustyles<br><br>
 
 JavaScript<br>
-https://fustyles.github.io/BlocklyResearch/Toolbox/myContinuousToolbox/index.html?lang=en&core=javaScript<br><br>
+https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/JavaScript.html<br><br>
 Python<br>
-https://fustyles.github.io/BlocklyResearch/Toolbox/myContinuousToolbox/index.html?lang=en&core=python<br><br>
+https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html<br><br>
