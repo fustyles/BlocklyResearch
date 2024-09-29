@@ -507,8 +507,8 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 		if (typeof require !== "undefined") {
 			var code = Blockly.Python.workspaceToCode(workspace);
 			var Prefix = (code.indexOf("input(")!=-1)?"start ":"";
-			var WindowCloseAuto = (code.indexOf("input(")!=-1)?"\nprint()\nprint()\nprint()\ncloseWindow = input('Press Enter to exit')\nexit(0)":"";
-			code += WindowCloseAuto;
+			var autoClose = (code.indexOf("input(")!=-1)?"\nprint()\nprint()\nprint()\ncloseWindow = input('Press Enter to exit')\nexit(0)":"";
+			code += autoClose;
 			
 			const fs = require('fs');
 			var filePath = "temp.py";
@@ -518,8 +518,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 				} else {
 					var exec = require('child_process').exec;
 					const Path = require('path');
-					var python = "3.10.0";
-					if (fs.existsSync('python-'+python+'\\App\\Python\\python.exe'))
+					if (fs.existsSync('python-3.10.0\\App\\Python\\python.exe'))
 						var res = exec(Prefix + 'python-'+python+'\\App\\Python\\python '+filePath, {encoding: 'arraybuffer'});   //Portable
 					else
 						var res = exec(Prefix + 'py '+filePath, {encoding: 'arraybuffer'});    //Local
