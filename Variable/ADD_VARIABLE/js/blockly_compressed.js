@@ -1520,10 +1520,10 @@ onItemSelected_(a, b) {
         }
         if (a === ADD_VARIABLE_ID$$module$build$src$core$internal_constants) {
             this.setNewValue = function (name) {
-				var ws = this.sourceBlock_.workspace;
-				if (name&&ws.getVariable(name)) 
-					this.setValue(ws.getVariable(name).getId());
-			}			
+            	var ws = this.sourceBlock_.workspace;
+            	if (name&&ws.getVariable(name)) 
+            		this.setValue(ws.getVariable(name).getId());
+            }			
             createVariableButtonHandler$$module$build$src$core$variables(this.sourceBlock_.workspace, name => {this.setNewValue(name);}, "");
             return
         }		
