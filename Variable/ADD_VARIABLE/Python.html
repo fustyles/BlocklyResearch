@@ -564,17 +564,18 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 
 	//工作區匯入積木結構XML檔案
 	function workspaceImportFromXML() {
-		var e = document.getElementById("importBlocks");
+		var inputId = "importBlocks";
+		var e = document.getElementById(inputId);
 		if (e) {
 			e.click();
 			return;
 		}
 
-		var input=document.createElement('input');
-		input.type="file";
-		input.id="importBlocks";
+		var input = document.createElement('input');
+		input.type = "file";
+		input.id = inputId;
 		input.style.display = "none";
-		input.accept=".xml";
+		input.accept = ".xml";
 		input.onchange = function(element) {
 			try {	
 				var file = this.files[0];
