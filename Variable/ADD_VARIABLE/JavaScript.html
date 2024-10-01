@@ -69,15 +69,15 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 	
 	<!-- 工具箱自訂積木產出程式碼內容(javascript.js) -->
 
-	javascript.javascriptGenerator.forBlock['test1'] = function(block, generator) {
+	Blockly.JavaScript.forBlock['test1'] = function(block, generator) {
 		var message = generator.valueToCode(block, 'message', javascript.Order.ATOMIC);
 		
 		var code = 'alert(' + message + ');\n';
 		return code;
 	};
 	
-	javascript.javascriptGenerator.forBlock['test2'] = function(block, generator) {
-		javascript.javascriptGenerator.definitions_['messagebox'] = 'var message = "Hello World";\n';
+	Blockly.JavaScript.forBlock['test2'] = function(block, generator) {
+		Blockly.JavaScript.definitions_['messagebox'] = 'var message = "Hello World";\n';
 		
 		var code = "message";
 		return [code, javascript.Order.NONE];
