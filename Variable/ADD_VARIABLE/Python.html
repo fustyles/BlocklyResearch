@@ -464,7 +464,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 		Blockly.getMainWorkspace().clear();
 		Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'), demoWorkspace);
 	}
-	//startBlocks();
+	startBlocks();
 
 	//監聽工作區改變輸出程式碼
 	function onWorkspaceChanged(event) {
@@ -600,7 +600,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 	}
 
 	//新增工作區功能選單 重設工作區
-	Blockly.Msg["WORKSPACE_RESET"] = "Reset Workspace";
+	Blockly.Msg["WORKSPACE_RESET"] = "👻 Reset Workspace";
 	function registerWorkspaceReset() {
 	  if (Blockly.ContextMenuRegistry.registry.getItem('workspace_reset')) {
 		return;
@@ -623,7 +623,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 	registerWorkspaceReset();
 
 	//新增工作區功能選單 匯出積木結構XML檔
-	Blockly.Msg["WORKSPACE_BLOCKS_EXPORT_XML_MSG"] = "Export Workspace Blocks as XML File";
+	Blockly.Msg["WORKSPACE_BLOCKS_EXPORT_XML_MSG"] = "👻 Export Workspace Blocks as XML File";
 	function registerWorkspaceBlocksExportToXML() {
 	  if (Blockly.ContextMenuRegistry.registry.getItem('workspace_blocks_export_xml')) {
 		return;
@@ -646,7 +646,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 	registerWorkspaceBlocksExportToXML();
 
 	//新增工作區功能選單 匯入積木結構XML檔
-	Blockly.Msg["WORKSPACE_BLOCKS_IMPORT_XML_MSG"] = "Import Workspace Blocks from XML File";
+	Blockly.Msg["WORKSPACE_BLOCKS_IMPORT_XML_MSG"] = "👻 Import Workspace Blocks from XML File";
 	function registerWorkspaceBlocksImportFromXML() {
 	  if (Blockly.ContextMenuRegistry.registry.getItem('workspace_blocks_import_xml')) {
 		return;
@@ -669,7 +669,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 	registerWorkspaceBlocksImportFromXML();
 	
 	//新增工作區功能選單 匯出PYTHON檔
-	Blockly.Msg["WORKSPACE_BLOCKS_EXPORT_PY_MSG"] = "Export Workspace as PY File";
+	Blockly.Msg["WORKSPACE_BLOCKS_EXPORT_PY_MSG"] = "👻 Export Workspace as PY File";
 	function registerWorkspaceBlocksExportToPY() {
 	  if (Blockly.ContextMenuRegistry.registry.getItem('workspace_blocks_export_py')) {
 		return;
@@ -692,7 +692,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 	registerWorkspaceBlocksExportToPY();
 	
 	//新增工作區功能選單 匯出PYTHON檔並執行
-	Blockly.Msg["WORKSPACE_BLOCKS_EXECUTE_PY_MSG"] = "Run the Code";
+	Blockly.Msg["WORKSPACE_BLOCKS_EXECUTE_PY_MSG"] = "👻 Run the Code";
 	function registerWorkspaceBlocksExecutePY() {
 	  if (Blockly.ContextMenuRegistry.registry.getItem('workspace_blocks_execute_py')) {
 		return;
