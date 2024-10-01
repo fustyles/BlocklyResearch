@@ -539,7 +539,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 	function workspaceExportToXML() {
 		  try {
 			var xml = Blockly.Xml.workspaceToDom(demoWorkspace);
-			xml = Blockly.Xml.domToText(xml);
+			xml = Blockly.utils.xml.domToText(xml);
 
 			var link = document.createElement('a');
 			link.download="test.xml";
@@ -555,17 +555,18 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 
 	//工作區匯入積木結構XML檔案
 	function workspaceImportFromXML() {
-		var e = document.getElementById("importBlocks");
+		var inputId = "importBlocks";
+		var e = document.getElementById(inputId);
 		if (e) {
 			e.click();
 			return;
 		}
 
-		var input=document.createElement('input');
-		input.type="file";
-		input.id="importBlocks";
+		var input = document.createElement('input');
+		input.type = "file";
+		input.id = inputId;
 		input.style.display = "none";
-		input.accept=".xml";
+		input.accept = ".xml";
 		input.onchange = function(element) {
 			try {	
 				var file = this.files[0];
@@ -573,8 +574,8 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 					var fr = new FileReader();           
 					fr.onload = function (event) {
 						Blockly.getMainWorkspace().clear();
-						var blocks = Blockly.Xml.textToDom(event.target.result);
-						Blockly.Xml.domToWorkspace(blocks, Blockly.mainWorkspace);
+						var blocks = Blockly.utils.xml.textToDom(event.target.result);
+						Blockly.Xml.domToWorkspace(blocks, demoWorkspace);
 					};
 					fr.readAsText(file);
 				}

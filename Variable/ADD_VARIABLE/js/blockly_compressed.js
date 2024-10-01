@@ -1519,11 +1519,10 @@ onItemSelected_(a, b) {
             return
         }
         if (a === ADD_VARIABLE_ID$$module$build$src$core$internal_constants) {
-            createVariableButtonHandler$$module$build$src$core$variables(this.sourceBlock_.workspace, void 0, "");
-            var v = this.sourceBlock_.workspace.getVariablesOfType("");
-            v.sort(Blockly.VariableModel.compareByName);
-            if(v.length>0)
-                this.setValue(v[v.length-1].id_);
+			var newId = "";
+            createVariableButtonHandler$$module$build$src$core$variables(this.sourceBlock_.workspace, name => {if (name&&this.sourceBlock_.workspace.getVariable(name)) newId = this.sourceBlock_.workspace.getVariable(name).getId();}, "");
+			if(newId)
+                this.setValue(newId);
             return
         }		
     }
