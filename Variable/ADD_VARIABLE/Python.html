@@ -506,7 +506,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 					console.log(err);
 				} else {
 					var exec = require('child_process').exec;
-					var portablePythonPath = 'python-3.10.0\\App\\Python\\';
+					var portablePythonPath = 'python-3.10.5\\App\\Python\\';    // https://sourceforge.net/projects/portable-python/files/
 					if (fs.existsSync(portablePythonPath + 'python.exe'))
 						var res = exec(Prefix + portablePythonPath + 'python ' + filePath, {encoding: 'arraybuffer'});   // Portable Python Environment
 					else
