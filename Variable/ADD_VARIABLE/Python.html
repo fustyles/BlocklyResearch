@@ -506,8 +506,9 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 					console.log(err);
 				} else {
 					var exec = require('child_process').exec;
-					if (fs.existsSync('python-3.10.0\\App\\Python\\python.exe'))
-						var res = exec(Prefix + 'python-3.10.0\\App\\Python\\python '+filePath, {encoding: 'arraybuffer'});   // Portable Python Environment
+					var portablePythonPath = 'python-3.10.0\\App\\Python\\';
+					if (fs.existsSync(portablePythonPath + 'python.exe'))
+						var res = exec(Prefix + portablePythonPath + 'python '+filePath, {encoding: 'arraybuffer'});   // Portable Python Environment
 					else
 						var res = exec(Prefix + 'py '+filePath, {encoding: 'arraybuffer'});    // Install Python Environment
 					
