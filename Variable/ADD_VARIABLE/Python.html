@@ -473,16 +473,6 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 		console.log(code);
 	}
 	demoWorkspace.addChangeListener(onWorkspaceChanged);
-
-	//執行工作區程式碼
-	function runCode() {
-		var code = Blockly.Python.workspaceToCode(demoWorkspace);
-		try {
-			eval(code);
-		} catch (e) {
-			alert(e);
-		}
-	}
 	
 	//工作區匯出PY檔案
 	function workspaceExportToPY() {
@@ -503,7 +493,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 
 	//工作區執行程式碼
 	Blockly.Msg["WORKSPACE_SORRY"] = "This feature requires a Node.js environment and a Python installation.";
-	function workspaceExecutePY() {
+	function runCode() {
 		if (typeof require !== "undefined") {
 			var code = Blockly.Python.workspaceToCode(workspace);
 			var Prefix = (code.indexOf("input(")!=-1)?"start ":"";
@@ -705,7 +695,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 			return 'enabled';
 		},
 		callback: function(a) {
-			workspaceExecutePY();
+			runCode();
 		},
 		scopeType: Blockly.ContextMenuRegistry.ScopeType.WORKSPACE,id: 'workspace_blocks_execute_py',
 		weight: 204,
