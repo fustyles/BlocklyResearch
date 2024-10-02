@@ -497,8 +497,8 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 		if (typeof require !== "undefined") {
 			var code = Blockly.Python.workspaceToCode(workspace);
 			var Prefix = (code.indexOf("input(")!=-1)?"start ":"";
-			var queryClose = (code.indexOf("input(")!=-1)?"\nprint()\nprint()\nprint()\ncloseWindow = input('Press Enter to exit')\nexit(0)":"";
-			code += queryClose;
+			var queryCloseWindow = (code.indexOf("input(")!=-1)?"\nprint()\nprint()\nprint()\ncloseWindow = input('Press Enter to exit')\nexit(0)":"";
+			code += queryCloseWindow;
 			
 			const fs = require('fs');
 			var filePath = "temp.py";
