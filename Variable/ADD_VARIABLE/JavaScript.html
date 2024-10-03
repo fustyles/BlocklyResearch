@@ -1,6 +1,6 @@
 <!-- 
 
-Author : ChungYi Fu (Kaohsiung, Taiwan)   2024/10/2 01:00
+Author : ChungYi Fu (Kaohsiung, Taiwan)   2024/10/4 01:00
 https://www.facebook.com/francefu
 
 JavaScript
@@ -19,7 +19,8 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
   <script src="js/blockly_compressed.js"></script>
   <script src="js/blocks_compressed.js"></script>
   <script src="js/javascript_compressed.js"></script>
-  <script src="js/en.js"></script>	
+  <script src="js/en.js"></script>
+  <script src="js/beautify.js"></script>	
 </head>
 <body>
 <div id="blocklyDiv" style="position: absolute; left: 0px; top: 0px; height: 600px; width: 600px;">
@@ -491,7 +492,7 @@ https://fustyles.github.io/BlocklyResearch/Variable/ADD_VARIABLE/Python.html
 	function onWorkspaceChanged(event) {
 		var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
 		console.clear();
-		console.log(code);
+		console.log(js_beautify(code));
 	}
 	demoWorkspace.addChangeListener(onWorkspaceChanged);
 
