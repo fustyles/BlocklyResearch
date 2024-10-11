@@ -17,6 +17,37 @@
 
 var Blockly = Blockly || { Msg: Object.create(null) };
 
+Blockly.Msg["WORKSPACE_LANGUAGE"] = "Language Environtment";
+Blockly.Msg["WORKSPACE_LANGUAGE_JAVASCRIPT"] = "JavaScript";
+Blockly.Msg["WORKSPACE_LANGUAGE_PYTHON"] = "Python";
+Blockly.Msg["WORKSPACE_LANGUAGE_ARDUINO"] = "Arduino";
+Blockly.Msg["WORKSPACE_RESET"] = "Reset workspace";
+Blockly.Msg["WORKSPACE_RELOAD"] = "Window reload";
+Blockly.Msg["WORKSPACE_VERSION"] = "Version";
+Blockly.Msg["WORKSPACE_BLOCKFACTORY"] = "Block factory";
+Blockly.Msg["WORKSPACE_BLOCKTOOL"] = "Block tool";
+Blockly.Msg["WORKSPACE_BLOCKS_EXPORT_XML_MSG"] = "Export blocks to XML file";
+Blockly.Msg["WORKSPACE_BLOCKS_IMPORT_XML_MSG"] = "Import blocks from XML file";
+Blockly.Msg["WORKSPACE_BLOCKS_EXPORT_HTML_MSG"] = "Export blocks to HTML file";
+Blockly.Msg["WORKSPACE_TO_CODE_Y_MSG"] = "Start showing code in the console";
+Blockly.Msg["WORKSPACE_TO_CODE_N_MSG"] = "Stop updating code";
+Blockly.Msg["WORKSPACE_RUNCODE"] = "Run code (Ctrl+Shift)";
+Blockly.Msg["WORKSPACE_IMPORT_JS_URL"] = "url of js file";
+Blockly.Msg["BUTTON_RUN"] = "Run code (Ctrl+Shift)";
+Blockly.Msg["BUTTON_IMPORT_MODULE"] = "Import js file";
+Blockly.Msg["BUTTON_RUN"] = Blockly.Msg["WORKSPACE_RUNCODE"];
+Blockly.Msg["BUTTON_IMPORT_XML"] = Blockly.Msg["WORKSPACE_BLOCKS_IMPORT_XML_MSG"];
+Blockly.Msg["BUTTON_EXPORT_XML"] = Blockly.Msg["WORKSPACE_BLOCKS_EXPORT_XML_MSG"];
+Blockly.Msg["BUTTON_EXPORT_CODE"] = Blockly.Msg["WORKSPACE_BLOCKS_EXPORT_HTML_MSG"];
+Blockly.Msg["LANG-SELECTOR"] = "Language";
+Blockly.Msg["SELECT_EN"] = "English";
+Blockly.Msg["SELECT_ZH-HANS"] = "Chinese(CHS)";
+Blockly.Msg["SELECT_ZH-HANT"] = "Chinese(CHT)";
+
+
+
+//*************** System Message ******************
+
 Blockly.Msg["TOOLBOX_NAME"] = "TOOLBOX";
 Blockly.Msg["LOGIC_NAME"] = "LOGIC";
 Blockly.Msg["LOOPS_NAME"] = "LOOPS";
@@ -28,6 +59,7 @@ Blockly.Msg["VARIABLES_NAME"] = "VARIABLES";
 Blockly.Msg["PROCEDURES_NAME"] = "PROCEDURES";
 
 Blockly.Msg["ADD_COMMENT"] = "Add Comment";
+Blockly.Msg["ADD_VARIABLE"] = "Create variable...";
 Blockly.Msg["CANNOT_DELETE_VARIABLE_PROCEDURE"] = "Can't delete the variable '%1' because it's part of the definition of the function '%2'";
 Blockly.Msg["CHANGE_VALUE_TITLE"] = "Change value:";
 Blockly.Msg["CLEAN_UP"] = "Clean up Blocks";
@@ -414,7 +446,6 @@ Blockly.Msg["VARIABLES_SET_HELPURL"] = "https://github.com/google/blockly/wiki/V
 Blockly.Msg["VARIABLES_SET_TOOLTIP"] = "Sets this variable to be equal to the input.";
 Blockly.Msg["VARIABLE_ALREADY_EXISTS"] = "A variable named '%1' already exists.";
 Blockly.Msg["VARIABLE_ALREADY_EXISTS_FOR_ANOTHER_TYPE"] = "A variable named '%1' already exists for another type: '%2'.";
-Blockly.Msg["VARIABLE_ALREADY_EXISTS_FOR_A_PARAMETER"] = "A variable named '%1' already exists as a parameter in the procedure '%2'.";
 Blockly.Msg["WORKSPACE_ARIA_LABEL"] = "Blockly Workspace";
 Blockly.Msg["WORKSPACE_COMMENT_DEFAULT_TEXT"] = "Say something...";
 Blockly.Msg["CONTROLS_FOREACH_INPUT_DO"] = Blockly.Msg["CONTROLS_REPEAT_INPUT_DO"];
@@ -438,14 +469,14 @@ Blockly.Msg["PROCEDURES_DEFRETURN_TITLE"] = Blockly.Msg["PROCEDURES_DEFNORETURN_
 Blockly.Msg["TEXT_APPEND_VARIABLE"] = Blockly.Msg["VARIABLES_DEFAULT_NAME"];
 Blockly.Msg["TEXT_CREATE_JOIN_ITEM_TITLE_ITEM"] = Blockly.Msg["VARIABLES_DEFAULT_NAME"];
 
-Blockly.Msg["LOGIC_HUE"] = "210";
-Blockly.Msg["LOOPS_HUE"] = "120";
 Blockly.Msg["MATH_HUE"] = "230";
-Blockly.Msg["TEXTS_HUE"] = "160";
+Blockly.Msg["LOOPS_HUE"] = "120";
 Blockly.Msg["LISTS_HUE"] = "260";
-Blockly.Msg["COLOUR_HUE"] = "20";
+Blockly.Msg["LOGIC_HUE"] = "210";
 Blockly.Msg["VARIABLES_HUE"] = "330";
-Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
+Blockly.Msg["TEXTS_HUE"] = "160";
 Blockly.Msg["PROCEDURES_HUE"] = "290";
+Blockly.Msg["COLOUR_HUE"] = "20";
+Blockly.Msg["VARIABLES_DYNAMIC_HUE"] = "310";
 return Blockly.Msg;
 }));

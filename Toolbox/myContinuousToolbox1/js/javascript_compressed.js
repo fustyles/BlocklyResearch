@@ -12,7 +12,50 @@
   }
 }(this, function(__parent__) {
 var $=__parent__.__namespace__;
-var lists_create_empty$$module$build$src$generators$javascript$lists=function(a,b){return["[]",Order$$module$build$src$generators$javascript$javascript_generator.ATOMIC]},lists_create_with$$module$build$src$generators$javascript$lists=function(a,b){const c=Array(a.itemCount_);for(let d=0;d<a.itemCount_;d++)c[d]=b.valueToCode(a,"ADD"+d,Order$$module$build$src$generators$javascript$javascript_generator.NONE)||"null";return["["+c.join(", ")+"]",Order$$module$build$src$generators$javascript$javascript_generator.ATOMIC]},
+
+
+
+var colour_picker$$module$build$src$generators$javascript$colour=function(a,b){return[b.quote_(a.getFieldValue("COLOUR")),Order$$module$build$src$generators$javascript$javascript_generator.ATOMIC]},colour_random$$module$build$src$generators$javascript$colour=function(a,b){return[b.provideFunction_("colourRandom",`
+function ${b.FUNCTION_NAME_PLACEHOLDER_}() {
+  var num = Math.floor(Math.random() * Math.pow(2, 24));
+  return '#' + ('00000' + num.toString(16)).substr(-6);
+}
+`)+"()",Order$$module$build$src$generators$javascript$javascript_generator.FUNCTION_CALL]},colour_rgb$$module$build$src$generators$javascript$colour=function(a,b){const c=b.valueToCode(a,"RED",Order$$module$build$src$generators$javascript$javascript_generator.NONE)||0,d=b.valueToCode(a,"GREEN",Order$$module$build$src$generators$javascript$javascript_generator.NONE)||0;a=b.valueToCode(a,"BLUE",Order$$module$build$src$generators$javascript$javascript_generator.NONE)||0;return[b.provideFunction_("colourRgb",
+`
+function ${b.FUNCTION_NAME_PLACEHOLDER_}(r, g, b) {
+  r = Math.max(Math.min(Number(r), 100), 0) * 2.55;
+  g = Math.max(Math.min(Number(g), 100), 0) * 2.55;
+  b = Math.max(Math.min(Number(b), 100), 0) * 2.55;
+  r = ('0' + (Math.round(r) || 0).toString(16)).slice(-2);
+  g = ('0' + (Math.round(g) || 0).toString(16)).slice(-2);
+  b = ('0' + (Math.round(b) || 0).toString(16)).slice(-2);
+  return '#' + r + g + b;
+}
+`)+"("+c+", "+d+", "+a+")",Order$$module$build$src$generators$javascript$javascript_generator.FUNCTION_CALL]},colour_blend$$module$build$src$generators$javascript$colour=function(a,b){const c=b.valueToCode(a,"COLOUR1",Order$$module$build$src$generators$javascript$javascript_generator.NONE)||"'#000000'",d=b.valueToCode(a,"COLOUR2",Order$$module$build$src$generators$javascript$javascript_generator.NONE)||"'#000000'";a=b.valueToCode(a,"RATIO",Order$$module$build$src$generators$javascript$javascript_generator.NONE)||
+.5;return[b.provideFunction_("colourBlend",`
+function ${b.FUNCTION_NAME_PLACEHOLDER_}(c1, c2, ratio) {
+  ratio = Math.max(Math.min(Number(ratio), 1), 0);
+  var r1 = parseInt(c1.substring(1, 3), 16);
+  var g1 = parseInt(c1.substring(3, 5), 16);
+  var b1 = parseInt(c1.substring(5, 7), 16);
+  var r2 = parseInt(c2.substring(1, 3), 16);
+  var g2 = parseInt(c2.substring(3, 5), 16);
+  var b2 = parseInt(c2.substring(5, 7), 16);
+  var r = Math.round(r1 * (1 - ratio) + r2 * ratio);
+  var g = Math.round(g1 * (1 - ratio) + g2 * ratio);
+  var b = Math.round(b1 * (1 - ratio) + b2 * ratio);
+  r = ('0' + (r || 0).toString(16)).slice(-2);
+  g = ('0' + (g || 0).toString(16)).slice(-2);
+  b = ('0' + (b || 0).toString(16)).slice(-2);
+  return '#' + r + g + b;
+}
+`)+"("+c+", "+d+", "+a+")",Order$$module$build$src$generators$javascript$javascript_generator.FUNCTION_CALL]}
+
+
+
+
+
+,lists_create_empty$$module$build$src$generators$javascript$lists=function(a,b){return["[]",Order$$module$build$src$generators$javascript$javascript_generator.ATOMIC]},lists_create_with$$module$build$src$generators$javascript$lists=function(a,b){const c=Array(a.itemCount_);for(let d=0;d<a.itemCount_;d++)c[d]=b.valueToCode(a,"ADD"+d,Order$$module$build$src$generators$javascript$javascript_generator.NONE)||"null";return["["+c.join(", ")+"]",Order$$module$build$src$generators$javascript$javascript_generator.ATOMIC]},
 lists_repeat$$module$build$src$generators$javascript$lists=function(a,b){const c=b.provideFunction_("listsRepeat",`
 function ${b.FUNCTION_NAME_PLACEHOLDER_}(value, n) {
   var array = [];
@@ -238,7 +281,18 @@ for(c=0;c<a.length;c++)b.push(this.nameDB_.getName(a[c].getId(),$.NameType$$modu
 b,c=!1){let d="";if(!a.outputConnection||!a.outputConnection.targetConnection){var e=a.getCommentText();e&&(e=$.wrap$$module$build$src$core$utils$string(e,this.COMMENT_WRAP-3),d+=this.prefixLines(e+"\n","// "));for(let f=0;f<a.inputList.length;f++)a.inputList[f].type===$.inputTypes$$module$build$src$core$inputs$input_types.VALUE&&(e=a.inputList[f].connection.targetBlock())&&(e=this.allNestedComments(e))&&(d+=this.prefixLines(e,"// "))}a=a.nextConnection&&a.nextConnection.targetBlock();c=c?"":this.blockToCode(a);
 return d+b+c}getAdjusted(a,b,c=0,d=!1,e=Order$$module$build$src$generators$javascript$javascript_generator.NONE){a.workspace.options.oneBasedIndex&&c--;const f=a.workspace.options.oneBasedIndex?"1":"0";let g=e;0<c?g=Order$$module$build$src$generators$javascript$javascript_generator.ADDITION:0>c?g=Order$$module$build$src$generators$javascript$javascript_generator.SUBTRACTION:d&&(g=Order$$module$build$src$generators$javascript$javascript_generator.UNARY_NEGATION);a=this.valueToCode(a,b,g)||f;if(0===
 c&&!d)return a;if($.isNumber$$module$build$src$core$utils$string(a))return a=String(Number(a)+c),d&&(a=String(-Number(a))),a;0<c?a=`${a} + ${c}`:0>c&&(a=`${a} - ${-c}`);d&&(a=c?`-(${a})`:`-${a}`);Math.floor(e)>=Math.floor(g)&&(a=`(${a})`);return a}},module$build$src$generators$javascript$javascript_generator={};module$build$src$generators$javascript$javascript_generator.JavascriptGenerator=JavascriptGenerator$$module$build$src$generators$javascript$javascript_generator;
-module$build$src$generators$javascript$javascript_generator.Order=Order$$module$build$src$generators$javascript$javascript_generator;var getSubstringIndex$$module$build$src$generators$javascript$lists=function(a,b,c){return"FIRST"===b?"0":"FROM_END"===b?a+".length - 1 - "+c:"LAST"===b?a+".length - 1":c},module$build$src$generators$javascript$lists={};module$build$src$generators$javascript$lists.lists_create_empty=lists_create_empty$$module$build$src$generators$javascript$lists;module$build$src$generators$javascript$lists.lists_create_with=lists_create_with$$module$build$src$generators$javascript$lists;
+module$build$src$generators$javascript$javascript_generator.Order=Order$$module$build$src$generators$javascript$javascript_generator;
+
+
+
+var module$build$src$generators$javascript$colour={};
+module$build$src$generators$javascript$colour.colour_picker=colour_picker$$module$build$src$generators$javascript$colour;
+module$build$src$generators$javascript$colour.colour_random=colour_random$$module$build$src$generators$javascript$colour;
+module$build$src$generators$javascript$colour.colour_blend=colour_blend$$module$build$src$generators$javascript$colour;
+
+
+
+var getSubstringIndex$$module$build$src$generators$javascript$lists=function(a,b,c){return"FIRST"===b?"0":"FROM_END"===b?a+".length - 1 - "+c:"LAST"===b?a+".length - 1":c},module$build$src$generators$javascript$lists={};module$build$src$generators$javascript$lists.lists_create_empty=lists_create_empty$$module$build$src$generators$javascript$lists;module$build$src$generators$javascript$lists.lists_create_with=lists_create_with$$module$build$src$generators$javascript$lists;
 module$build$src$generators$javascript$lists.lists_getIndex=lists_getIndex$$module$build$src$generators$javascript$lists;module$build$src$generators$javascript$lists.lists_getSublist=lists_getSublist$$module$build$src$generators$javascript$lists;module$build$src$generators$javascript$lists.lists_indexOf=lists_indexOf$$module$build$src$generators$javascript$lists;module$build$src$generators$javascript$lists.lists_isEmpty=lists_isEmpty$$module$build$src$generators$javascript$lists;
 module$build$src$generators$javascript$lists.lists_length=lists_length$$module$build$src$generators$javascript$lists;module$build$src$generators$javascript$lists.lists_repeat=lists_repeat$$module$build$src$generators$javascript$lists;module$build$src$generators$javascript$lists.lists_reverse=lists_reverse$$module$build$src$generators$javascript$lists;module$build$src$generators$javascript$lists.lists_setIndex=lists_setIndex$$module$build$src$generators$javascript$lists;
 module$build$src$generators$javascript$lists.lists_sort=lists_sort$$module$build$src$generators$javascript$lists;module$build$src$generators$javascript$lists.lists_split=lists_split$$module$build$src$generators$javascript$lists;var controls_ifelse$$module$build$src$generators$javascript$logic=controls_if$$module$build$src$generators$javascript$logic,module$build$src$generators$javascript$logic={};module$build$src$generators$javascript$logic.controls_if=controls_if$$module$build$src$generators$javascript$logic;module$build$src$generators$javascript$logic.controls_ifelse=controls_if$$module$build$src$generators$javascript$logic;module$build$src$generators$javascript$logic.logic_boolean=logic_boolean$$module$build$src$generators$javascript$logic;
@@ -253,7 +307,15 @@ module$build$src$generators$javascript$procedures.procedures_defnoreturn=procedu
 module$build$src$generators$javascript$text.text_changeCase=text_changeCase$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_charAt=text_charAt$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_count=text_count$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_getSubstring=text_getSubstring$$module$build$src$generators$javascript$text;
 module$build$src$generators$javascript$text.text_indexOf=text_indexOf$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_isEmpty=text_isEmpty$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_join=text_join$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_length=text_length$$module$build$src$generators$javascript$text;
 module$build$src$generators$javascript$text.text_print=text_print$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_prompt=text_prompt_ext$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_prompt_ext=text_prompt_ext$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_replace=text_replace$$module$build$src$generators$javascript$text;
-module$build$src$generators$javascript$text.text_reverse=text_reverse$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_trim=text_trim$$module$build$src$generators$javascript$text;var module$build$src$generators$javascript$variables={};module$build$src$generators$javascript$variables.variables_get=variables_get$$module$build$src$generators$javascript$variables;module$build$src$generators$javascript$variables.variables_set=variables_set$$module$build$src$generators$javascript$variables;var module$build$src$generators$javascript$variables_dynamic={};module$build$src$generators$javascript$variables_dynamic.variables_get_dynamic=variables_get$$module$build$src$generators$javascript$variables;module$build$src$generators$javascript$variables_dynamic.variables_set_dynamic=variables_set$$module$build$src$generators$javascript$variables;var javascriptGenerator$$module$build$src$generators$javascript=new JavascriptGenerator$$module$build$src$generators$javascript$javascript_generator,generators$$module$build$src$generators$javascript=Object.assign({},module$build$src$generators$javascript$lists,module$build$src$generators$javascript$logic,module$build$src$generators$javascript$loops,module$build$src$generators$javascript$math,module$build$src$generators$javascript$procedures,module$build$src$generators$javascript$text,module$build$src$generators$javascript$variables,
+module$build$src$generators$javascript$text.text_reverse=text_reverse$$module$build$src$generators$javascript$text;module$build$src$generators$javascript$text.text_trim=text_trim$$module$build$src$generators$javascript$text;var module$build$src$generators$javascript$variables={};module$build$src$generators$javascript$variables.variables_get=variables_get$$module$build$src$generators$javascript$variables;module$build$src$generators$javascript$variables.variables_set=variables_set$$module$build$src$generators$javascript$variables;var module$build$src$generators$javascript$variables_dynamic={};module$build$src$generators$javascript$variables_dynamic.variables_get_dynamic=variables_get$$module$build$src$generators$javascript$variables;module$build$src$generators$javascript$variables_dynamic.variables_set_dynamic=variables_set$$module$build$src$generators$javascript$variables;var javascriptGenerator$$module$build$src$generators$javascript=new JavascriptGenerator$$module$build$src$generators$javascript$javascript_generator,generators$$module$build$src$generators$javascript=Object.assign({}
+
+
+
+,module$build$src$generators$javascript$colour
+
+
+
+,module$build$src$generators$javascript$lists,module$build$src$generators$javascript$logic,module$build$src$generators$javascript$loops,module$build$src$generators$javascript$math,module$build$src$generators$javascript$procedures,module$build$src$generators$javascript$text,module$build$src$generators$javascript$variables,
 module$build$src$generators$javascript$variables_dynamic);for(const a in generators$$module$build$src$generators$javascript)javascriptGenerator$$module$build$src$generators$javascript.forBlock[a]=generators$$module$build$src$generators$javascript[a];var module$build$src$generators$javascript={};module$build$src$generators$javascript.JavascriptGenerator=JavascriptGenerator$$module$build$src$generators$javascript$javascript_generator;module$build$src$generators$javascript.Order=Order$$module$build$src$generators$javascript$javascript_generator;
 module$build$src$generators$javascript.javascriptGenerator=javascriptGenerator$$module$build$src$generators$javascript;
 module$build$src$generators$javascript.__namespace__=$;
