@@ -1,6 +1,6 @@
 //*************** toolbox initial ******************	
 let workspace = null;
-var python = "3.10.0";
+var pythonVersion = "3.10.5";
 var toolboxXmlString = "";
 
 function start() {
@@ -208,8 +208,8 @@ function start() {
 					var iconv = require('iconv-lite');
 					var exec = require('child_process').exec;
 	
-					if (fs.existsSync('python-'+python+'\\App\\Python\\python.exe')&&!pythonEnvironment) {
-						var res = exec('python-'+python+'\\App\\Python\\python -m '+code, {encoding: 'arraybuffer'});
+					if (fs.existsSync('python-'+pythonVersion+'\\App\\Python\\python.exe')&&!pythonEnvironment) {
+						var res = exec('python-'+pythonVersion+'\\App\\Python\\python -m '+code, {encoding: 'arraybuffer'});
 					}
 					else
 						var res = exec('%SystemRoot%\\System32\\cmd.exe /c '+filePath, {encoding: 'arraybuffer'});
@@ -285,8 +285,8 @@ function start() {
 					var exec = require('child_process').exec;
 					 
 					const Path = require('path')
-					if (fs.existsSync('python-'+python+'\\App\\Python\\python.exe')&&!pythonEnvironment)
-						var res = exec(showWindow + 'python-'+python+'\\App\\Python\\python '+filePath, {encoding: 'arraybuffer'});
+					if (fs.existsSync('python-'+pythonVersion+'\\App\\Python\\python.exe')&&!pythonEnvironment)
+						var res = exec(showWindow + 'python-'+pythonVersion+'\\App\\Python\\python '+filePath, {encoding: 'arraybuffer'});
 					else
 						var res = exec(showWindow + 'py '+filePath, {encoding: 'arraybuffer'});
 					

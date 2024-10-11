@@ -65,6 +65,7 @@ Blockly.Msg["VARIABLES_NAME"] = "VARIABLES";
 Blockly.Msg["PROCEDURES_NAME"] = "PROCEDURES";
 
 Blockly.Msg["ADD_COMMENT"] = "Add Comment";
+Blockly.Msg["ADD_VARIABLE"] = "Create variable...";
 Blockly.Msg["CANNOT_DELETE_VARIABLE_PROCEDURE"] = "Can't delete the variable '%1' because it's part of the definition of the function '%2'";
 Blockly.Msg["CHANGE_VALUE_TITLE"] = "Change value:";
 Blockly.Msg["CLEAN_UP"] = "Clean up Blocks";

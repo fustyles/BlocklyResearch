@@ -112,8 +112,6 @@ function start() {
 				}, 200);
 			}			
 		}
-		
-		
 		if ((event.type=="create"||event.type=="click")&&continuousFlyout.isVisible_==true) {
 			continuousFlyout.setVisible(false);
 		}
