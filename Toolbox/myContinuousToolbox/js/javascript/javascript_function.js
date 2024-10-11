@@ -3,53 +3,7 @@ let workspace = null;
 var toolboxXmlString = "";
 
 function start() {
-	
-	if (typeof require !== "undefined") {	
-		//NWJS功能選單
-		var menubar = new nw.Menu({ type: 'menubar' });
-		
-		var submenu1 = new nw.Menu();
-		submenu1.append(new nw.MenuItem({ label: Blockly.Msg["WORKSPACE_LANGUAGE_JAVASCRIPT"] }));
-		submenu1.items[0].click = function () {
-			location.href = 'index.html?lang=zh-hant&core=javascript';
-		}
-		submenu1.append(new nw.MenuItem({ label: Blockly.Msg["WORKSPACE_LANGUAGE_PYTHON"] }));
-		submenu1.items[1].click = function () {
-			location.href = 'index.html?lang=zh-hant&core=python';
-		}
-		submenu1.append(new nw.MenuItem({ label: Blockly.Msg["WORKSPACE_LANGUAGE_ARDUINO"] }));
-		submenu1.items[2].click = function () {
-			location.href = 'js/arduino/index.html?lang=zh-hant';
-		}
-		submenu1.append(new nw.MenuItem({ type: 'separator' }));		
-		submenu1.append(new nw.MenuItem({ label: Blockly.Msg["WORKSPACE_BLOCKFACTORY"] }));
-		submenu1.items[4].click = function () {
-			location.href = 'js/blockfactory/index.html?lang=zh-hant';
-		}
-		submenu1.append(new nw.MenuItem({ label: Blockly.Msg["WORKSPACE_BLOCKTOOL"] }));
-		submenu1.items[5].click = function () {
-			location.href = 'js/blocktool/index.html?lang=zh-hant';
-		}		
-		submenu1.append(new nw.MenuItem({ type: 'separator' }));
-		submenu1.append(new nw.MenuItem({ label: Blockly.Msg["WORKSPACE_RELOAD"] }));
-		submenu1.items[7].click = function () {
-			location.reload();
-		}	
-		menubar.append(new nw.MenuItem({
-		  label: Blockly.Msg["WORKSPACE_LANGUAGE"],
-		  submenu: submenu1
-		}));
-		
-		var submenu2 = new nw.Menu();
-		submenu2.append(new nw.MenuItem({ label: version }));
-		menubar.append(new nw.MenuItem({
-		  label: Blockly.Msg["WORKSPACE_VERSION"],
-		  submenu: submenu2
-		}));
-		
-		nw.Window.get().menu = menubar;
-	}
-	
+
 	//積木工具箱初始化
 	toolboxXmlString='<xml id="toolbox">';
 	if (typeof toolbox_system != 'undefined')	
