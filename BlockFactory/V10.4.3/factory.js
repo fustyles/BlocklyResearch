@@ -90,9 +90,23 @@ BlockFactory.STARTER_BLOCK_XML_TEXT =
 BlockFactory.formatChange = function() {
   var mask = document.getElementById('blocklyMask');
   var languagePre = document.getElementById('languagePre');
-  var languageTA = document.getElementById('languageTA');
-  if (document.getElementById('format').value === 'Manual-JSON' ||
-      document.getElementById('format').value === 'Manual-JS') {
+  var languageTA = document.getElementById('languageTA'); 
+  var format = document.getElementById('format');
+  
+  var rootBlock = FactoryUtils.getRootBlock(BlockFactory.mainWorkspace);
+  if (!rootBlock) {
+	return;
+  } 
+  var blockType = rootBlock.getFieldValue('NAME').trim().toLowerCase();
+  if (!blockType) {
+	blockType = BlockFactory.UNNAMED;
+  }
+  if (format.value === 'JSON'||format.value === 'Manual-JSON')    
+	var code = FactoryUtils.getBlockDefinition(blockType, rootBlock, 'JSON', BlockFactory.mainWorkspace);
+  else
+	var code = FactoryUtils.getBlockDefinition(blockType, rootBlock, 'JavaScript', BlockFactory.mainWorkspace);
+  FactoryUtils.injectCode(code, 'languagePre');
+  if (format.value === 'Manual-JSON' || format.value === 'Manual-JS') {
     Blockly.common.getMainWorkspace().hideChaff();
     mask.style.display = 'block';
     languagePre.style.display = 'none';
