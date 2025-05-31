@@ -715,8 +715,9 @@ BlockDefinitionExtractor.typeOther_ = function(type) {
 BlockDefinitionExtractor.colourBlockFromHue_ = function(hue) {
   var colourBlock = BlockDefinitionExtractor.newDomElement_(
       'block', {type: 'colour_hue'});
+  var colourHex = Blockly.utils.colour.hsvToHex(hue, Blockly.HSV_SATURATION, 255 * Blockly.HSV_VALUE);
   colourBlock.append(BlockDefinitionExtractor.newDomElement_('mutation', {
-    colour: Blockly.hueToRgb(hue)
+    colour: colourHex
   }));
   colourBlock.append(BlockDefinitionExtractor.newDomElement_(
       'field', {name: 'HUE'}, hue.toString()));
