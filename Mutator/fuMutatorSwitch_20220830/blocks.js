@@ -62,7 +62,9 @@ Blockly.libraryBlocks.fuMutatorSwitch_MUTATOR_MIXIN={
 		return a
 	}
 	,domToMutation:function(a){
-		this.caseCount_=parseInt(a.getAttribute("case"),10)||0;this.defaultCount_=parseInt(a.getAttribute("default"),10)||0;this.rebuildShape_()
+		this.caseCount_=parseInt(a.getAttribute("case"),10)||0;
+		this.defaultCount_=parseInt(a.getAttribute("default"),10)||0;
+		this.rebuildShape_()
 	}
 	,decompose:function(a){
 		var b=a.newBlock("fuMutatorSwitch_switch");
