@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			this.fieldBorderRect_ = Blockly.utils.dom.createSvgElement(
 				Blockly.utils.Svg.PATH,
 				{
-					'class': 'blocklyFieldRect blocklyFieldZelosOvalPath',
+					'class': 'blocklyFieldRect blocklyFieldZelosLabelPath',
 					'fill': '#FFFFFF', 
 					'stroke': '#FFFFFF' 
 				},
@@ -209,3 +209,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	);
 
 })
+
