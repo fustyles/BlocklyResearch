@@ -1,18 +1,11 @@
 /**
  * @license
- * Copyright 2013 Google LLC
- * SPDX-License-Identifier: Apache-2.0
- */
-
- 
- /**
- * @license
  * Copyright 2025 Taiwan (ChungYi Fu)
  * SPDX-License-Identifier: Apache-2.0
  */
 
 /**
- * @fileoverview Angle input field.
+ * @fileoverview FieldZelosLabelBackground field.
  * @author https://www.facebook.com/francefu/
  * @Update 10/16/2025 19:00 (Taiwan Standard Time)
  */
@@ -241,5 +234,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	);
 
 })
+
 
 
