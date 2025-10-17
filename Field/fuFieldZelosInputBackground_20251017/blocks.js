@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			let finalHeight = fieldHeight; 
 			let gRectPath = '';
 			let paddingLeft = 0;
-			let paddingTop = 15;
+			let paddingTop = 16;
 	        
 	        if (this.backgroundStyle_ === FieldZelosInputBackground.SHAPE_TYPES.SQUARE) {
 	            cornerRadius = finalHeight / 6;
@@ -234,6 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	);
 
 })
+
 
 
 
