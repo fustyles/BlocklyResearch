@@ -186,40 +186,42 @@ document.addEventListener('DOMContentLoaded', function() {
 			let finalHeight = fieldHeight; 
 			let gRectPath = '';
 			let paddingLeft = 0;
-			
-			if (this.backgroundStyle_ === FieldZelosInputBackground.SHAPE_TYPES.SQUARE) {
-				cornerRadius = finalHeight / 6;
-				finalWidth = textWidth + cornerRadius * 2;
-				gRectPath = FieldZelosInputBackground.getRoundRectPath(0, 0, finalWidth, finalHeight, cornerRadius);
-				paddingLeft = 5;
-			} else if (this.backgroundStyle_ === FieldZelosInputBackground.SHAPE_TYPES.OVAL) {
-				cornerRadius = finalHeight / 2;
-				finalWidth = textWidth + cornerRadius * 2;
-				gRectPath = FieldZelosInputBackground.getRoundRectPath(0, 0, finalWidth, finalHeight, cornerRadius);
-				paddingLeft = 14;
-			} else if (this.backgroundStyle_ === FieldZelosInputBackground.SHAPE_TYPES.HEXAGON) {
-				finalWidth = textWidth + finalHeight; 
-				gRectPath = FieldZelosInputBackground.getHexagonPath(textWidth, finalHeight);
-				paddingLeft = 14; 
-			} else if (this.backgroundStyle_ === FieldZelosInputBackground.SHAPE_TYPES.DIAMOND) {
-				finalWidth = textWidth * 2; 
-				gRectPath = FieldZelosInputBackground.getDiamondPath(finalWidth, finalHeight);
-				paddingLeft = finalWidth / 4; 
-			}
-			
-			borderRect.setAttribute('d', gRectPath);
-
-			this.size_.width = finalWidth;
-			this.size_.height = finalHeight; 
-
-			const translateX = 0;
-			const translateY = 2;
-
-			borderRect.setAttribute('transform', `translate(${translateX}, ${translateY})`);
-
-			this.textElement_.setAttribute('x', paddingLeft);
-			
-			this.applyColour();
+			let paddingTop = 15;
+	        
+	        if (this.backgroundStyle_ === FieldZelosInputBackground.SHAPE_TYPES.SQUARE) {
+	            cornerRadius = finalHeight / 6;
+	            finalWidth = textWidth + cornerRadius * 2;
+	            gRectPath = FieldZelosInputBackground.getRoundRectPath(0, 0, finalWidth, finalHeight, cornerRadius);
+	            paddingLeft = 5;
+	        } else if (this.backgroundStyle_ === FieldZelosInputBackground.SHAPE_TYPES.OVAL) {
+	            cornerRadius = finalHeight / 2;
+	            finalWidth = textWidth + cornerRadius * 2;
+	            gRectPath = FieldZelosInputBackground.getRoundRectPath(0, 0, finalWidth, finalHeight, cornerRadius);
+	            paddingLeft = 14;
+	        } else if (this.backgroundStyle_ === FieldZelosInputBackground.SHAPE_TYPES.HEXAGON) {
+	            finalWidth = textWidth + finalHeight; 
+	            gRectPath = FieldZelosInputBackground.getHexagonPath(textWidth, finalHeight);
+	            paddingLeft = 14; 
+	        } else if (this.backgroundStyle_ === FieldZelosInputBackground.SHAPE_TYPES.DIAMOND) {
+	            finalWidth = textWidth * 2; 
+	            gRectPath = FieldZelosInputBackground.getDiamondPath(finalWidth, finalHeight);
+	            paddingLeft = finalWidth / 4; 
+	        }
+	        
+	        borderRect.setAttribute('d', gRectPath);
+	
+	        this.size_.width = finalWidth;
+	        this.size_.height = finalHeight; 
+	
+	        const translateX = 0;
+	        const translateY = 2;
+	
+	        borderRect.setAttribute('transform', `translate(${translateX}, ${translateY})`);
+	
+	        this.textElement_.setAttribute('x', paddingLeft);
+			this.textElement_.setAttribute('y', paddingTop);
+	        
+	        this.applyColour();
 		}   
 	}
 
@@ -232,6 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	);
 
 })
+
 
 
 
