@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		initView() {
 			super.initView();
 			
-			console.log(this);
 			if (this.borderRect_) {
 				const firstClass = this.borderRect_.classList[0];
 				
@@ -233,6 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	);
 
 })
+
 
 
 
