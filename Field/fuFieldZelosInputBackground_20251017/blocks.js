@@ -124,13 +124,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		initView() {
 			super.initView();
 			
-			if (this.borderRect_) {
-				const firstClass = this.borderRect_.classList[0];
-				
-				if (firstClass) {
-					this.borderRect_.classList.remove(firstClass);
-				}
-			}
+	        if (this.borderRect_) {
+				this.borderRect_.remove();
+	        }
 
 			this.customBackgroundPath_ = Blockly.utils.dom.createSvgElement(
 				Blockly.utils.Svg.PATH,
@@ -234,6 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	);
 
 })
+
 
 
 
