@@ -16,7 +16,7 @@
 .customIcon {
   color: white;
 }
-/* Stacks the icon on top of the label. */
+/* Stacks the icon on left of the label. */
 .blocklyTreeRowContentContainer {
   display: flex;
   flex-direction: row;
