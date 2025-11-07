@@ -41,7 +41,19 @@ function start() {
     }
 
     function onWorkspaceChanged(event) {
-        if ((event.type == "create" || event.type == "click") && continuousFlyout.isVisible_ == true) {
+		if (event.type=="var_rename"||event.type=="var_delete"||(event.type=="create"&&event.json.type=="procedures_defnoreturn")||(event.type=="delete"&&event.oldJson.type=="procedures_defnoreturn")) {
+			setTimeout(function(){
+				Blockly.Events.disable();
+				try {
+					if (continuousFlyout.isVisible_ == true) {
+						continuousFlyout.setVisible(false);
+						workspace.toolbox_.clearSelection();
+					}
+				} finally {
+					Blockly.Events.enable();
+				}
+			}, 10);			
+		} else if ((event.type == "create" || event.type == "click") && continuousFlyout.isVisible_ == true) {
             continuousFlyout.setVisible(false);
         } else if (event.type == "toolbox_item_select" && continuousFlyout.isVisible_ == false) {
             continuousFlyout.setVisible(true);
