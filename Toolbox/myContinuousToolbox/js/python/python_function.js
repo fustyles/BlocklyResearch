@@ -67,7 +67,7 @@ function start() {
 				}, 200);
 			}			
 		}
-		if (event.type=="var_rename"||event.type=="var_delete"||(event.type=="create"&&event.json.type=="procedures_defnoreturn")||(event.type=="delete"&&event.oldJson.type=="procedures_defnoreturn")) {
+		if (event.type=="var_rename"||event.type=="var_delete"||(event.type=="create"&&event.json.type=="procedures_defnoreturn")||(event.type=="delete"&&event.oldJson.type=="procedures_defnoreturn")||(event.type=="change"&&event.element=="mutation")) {
 			setTimeout(function(){
 				Blockly.Events.disable();
 				try {
