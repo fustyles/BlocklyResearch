@@ -1,0 +1,369 @@
+<!-- 
+Author : ChungYi Fu (Kaohsiung, Taiwan)   2024/8/10 15:30
+https://www.facebook.com/francefu
+
+JavaScript
+https://fustyles.github.io/webduino/demoBlockly.html
+Python
+https://fustyles.github.io/webduino/demoBlockly_python.html
+
+Blockly Factory
+https://blockly-demo.appspot.com/static/demos/blockfactory/index.html
+SpBlockly Tool
+https://fustyles.github.io/webduino/SPduino_tool/index.html
+-->
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Demo Blockly</title>
+	<script src="js/blockly_compressed.js"></script>
+	<script src="js/blocks_compressed.js"></script>
+	<script src="js/javascript_compressed.js"></script>
+	<script src="js/en.js"></script>
+	<script src="plugin/ContinuousToolbox/ContinuousCategory.js"></script>
+	<script src="plugin/ContinuousToolbox/ContinuousMetrics.js"></script>  
+	<script src="plugin/ContinuousToolbox/ContinuousFlyout.js"></script>
+	<script src="plugin/ContinuousToolbox/ContinuousToolbox.js"></script>
+	<script src="plugin/ContinuousToolbox/ContinuousMetricsFlyout.js"></script>	
+</head>
+<body>
+<div id="blocklyDiv" style="position: absolute; left: 0px; top: 0px; height: 600px; width: 1000px;">
+
+
+  <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+    <category name="%{BKY_CATLOGIC}" categorystyle="logic_category">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_negate"></block>
+      <block type="logic_boolean"></block>
+      <block type="logic_null"></block>
+      <block type="logic_ternary"></block>
+    </category>
+    <category name="%{BKY_CATLOOPS}" categorystyle="loop_category">
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_whileUntil"></block>
+      <block type="controls_for">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="BY">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_forEach"></block>
+      <block type="controls_flow_statements"></block>
+    </category>
+    <category name="%{BKY_CATMATH}" categorystyle="list_category">
+      <block type="math_number">
+        <field name="NUM">123</field>
+      </block>
+      <block type="math_arithmetic">
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_single">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">9</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_trig">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">45</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_constant"></block>
+      <block type="math_number_property">
+        <value name="NUMBER_TO_CHECK">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_round">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">3.1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_on_list"></block>
+      <block type="math_modulo">
+        <value name="DIVIDEND">
+          <shadow type="math_number">
+            <field name="NUM">64</field>
+          </shadow>
+        </value>
+        <value name="DIVISOR">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_constrain">
+        <value name="VALUE">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+        <value name="LOW">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="HIGH">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_int">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_float"></block>
+      <block type="math_atan2">
+        <value name="X">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="Y">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="%{BKY_CATTEXT}" categorystyle="text_category">
+      <block type="text"></block>
+      <block type="text_join"></block>
+      <block type="text_append">
+        <value name="TEXT">
+          <shadow type="text"></shadow>
+        </value>
+      </block>
+      <block type="text_length">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_isEmpty">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_indexOf">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">{textVariable}</field>
+          </block>
+        </value>
+        <value name="FIND">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_charAt">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">{textVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_getSubstring">
+        <value name="STRING">
+          <block type="variables_get">
+            <field name="VAR">{textVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_changeCase">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_trim">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_print">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_prompt_ext">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="%{BKY_CATLISTS}" categorystyle="list_category">
+      <block type="lists_create_with">
+        <mutation items="0"></mutation>
+      </block>
+      <block type="lists_create_with"></block>
+      <block type="lists_repeat">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="lists_length"></block>
+      <block type="lists_isEmpty"></block>
+      <block type="lists_indexOf">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getIndex">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_setIndex">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getSublist">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_split">
+        <value name="DELIM">
+          <shadow type="text">
+            <field name="TEXT">,</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="lists_sort"></block>
+    </category>
+    <category name="%{BKY_CATVARIABLES}" categorystyle="variable_category" custom="VARIABLE"></category>
+    <category name="%{BKY_CATFUNCTIONS}" categorystyle="procedure_category" custom="PROCEDURE"></category>
+	<category name="%{BKY_CATAUTOCLOSE}" categorystyle="element_category" elementname="autoclose"></category>
+  </xml>
+
+<script>
+	Blockly.Msg["CATVARIABLES"] = "VARIABLES";
+	Blockly.Msg["CATFUNCTIONS"] = "FUNCTIONS";
+	Blockly.Msg["CATAUTOCLOSE"] = "AUTOCLOSE";
+	Blockly.Msg["CATLOGIC"] = "LOGIC";
+	Blockly.Msg["CATLOOPS"] = "LOOPS";
+	Blockly.Msg["CATMATH"] = "MATH";
+	Blockly.Msg["CATTEXT"] = "TEXT";
+	Blockly.Msg["CATLISTS"] = "LISTS";
+	Blockly.Msg["CATCOLOUR"] = "COLOUR";
+	
+	let demoWorkspace = Blockly.inject('blocklyDiv',{
+							renderer: 'zelos'
+							,theme: 'zelos'				
+							,media: 'https://blockly-demo.appspot.com/static/media/'
+							,toolbox: document.getElementById('toolbox')
+							,grid:{spacing: 20,length: 3,colour: '#eee',snap: true}
+							,zoom:{controls: true, wheel: false, startScale: 0.8, maxScale: 3, minScale: 0.3, scaleSpeed: 1.2}
+							,trashcan: true
+							,move:{
+								scrollbars: {
+								  horizontal: true,
+								  vertical: true
+								},
+								drag: true,
+								wheel: true
+							}
+							,plugins: {
+							  'flyoutsVerticalToolbox': ContinuousFlyout,
+							  'toolbox': ContinuousToolbox,	
+							  'metricsManager': ContinuousMetrics,
+							}
+						});
+						
+	Blockly.Flyout.prototype.getDynamicCategoryContents = function(a){
+		//this.workspace_.targetWorkspace.toolboxCategoryCallbacks.set('NAME_TYPE' ,Blockly.xxxxx.flyoutCategory);		//If you have implemented a custom toolbox category
+
+		a=this.workspace_.targetWorkspace.getToolboxCategoryCallback(a);
+		if("function"!==typeof a) {
+			throw TypeError("Couldn't find a callback function when opening a toolbox category.");
+			return null;
+		} else
+			return a(this.workspace_.targetWorkspace)
+	}						
+	
+	function workspaceResize() {
+		if (document.documentElement.clientWidth)
+			var workspaceWidth = document.documentElement.clientWidth;
+		else
+			var workspaceWidth = document.body.clientWidth;
+		if (document.documentElement.clientHeight)
+			var workspaceHeight = document.documentElement.clientHeight-1;
+		else
+			var workspaceHeight = document.body.clientHeight-1;
+		document.getElementById('blocklyDiv').style.width = workspaceWidth +"px";
+		document.getElementById('blocklyDiv').style.height = workspaceHeight +"px";
+		Blockly.svgResize(demoWorkspace);
+	}
+	workspaceResize();
+</script>
+</body>
+</html>
