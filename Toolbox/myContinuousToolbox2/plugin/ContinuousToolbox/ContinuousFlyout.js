@@ -34,14 +34,6 @@ class ContinuousFlyout extends Blockly.VerticalFlyout {
      */
     this.scrollAnimationFraction = 0.3;
 
-    /**
-     * Whether to recycle blocks when refreshing the flyout. When false, do not
-     * allow anything to be recycled. The default is to recycle.
-     * @type {boolean}
-     * @private
-     */
-    this.recyclingEnabled_ = true;
-
     this.workspace_.setMetricsManager(
         new ContinuousFlyoutMetrics(this.workspace_, this));
 		
@@ -291,68 +283,4 @@ class ContinuousFlyout extends Blockly.VerticalFlyout {
 	
 	workspace.eventHistory = [];
   }
-
-  /**
-   * Determine if this block can be recycled in the flyout.  Blocks that have no
-   * variables and are not dynamic shadoworkspace can be recycled.
-   * @param {!Blockly.BlockSvg} block The block to attempt to recycle.
-   * @return {boolean} True if the block can be recycled.
-   * @protected
-   */
-  blockIsRecyclable_(block) {
-    if (!this.recyclingEnabled_) {
-      return false;
-    }
-
-    // If the block needs to parse mutations, never recycle.
-    if (block.mutationToDom && block.domToMutation) {
-      return false;
-    }
-
-    for (const input of block.inputList) {
-      for (const field of input.fieldRow) {
-        // No variables.
-        if (field instanceof Blockly.FieldVariable) {
-          return false;
-        }
-        if (field instanceof Blockly.FieldLabelSerializable) {
-          return false;
-        }		
-        if (field instanceof Blockly.FieldDropdown) {
-          if (field.isOptionListDynamic()) {
-            return false;
-          }
-        }
-      }
-      // Check children.
-      if (input.connection) {
-        const targetBlock = /** @type {Blockly.BlockSvg} */
-            (input.connection.targetBlock());
-        if (targetBlock && !this.blockIsRecyclable_(targetBlock)) {
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-
-  /**
-   * Sets the function used to determine whether a block is recyclable.
-   * @param {function(!Blockly.BlockSvg):boolean} func The function used to
-   *     determine if a block is recyclable.
-   * @public
-   */
-  setBlockIsRecyclable(func) {	  
-    this.blockIsRecyclable_ = func;
-  }
-
-  /**
-   * Set whether the flyout can recycle blocks.
-   * @param {boolean} isEnabled True to allow blocks to be recycled, false
-   *     otherwise.
-   * @public
-   */
-  setRecyclingEnabled(isEnabled) {	  
-    this.recyclingEnabled_ = isEnabled;
-  }  
 }
