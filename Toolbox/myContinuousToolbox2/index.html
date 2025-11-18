@@ -314,7 +314,18 @@
 	Blockly.Msg["CATLISTS"] = "LISTS";
 	Blockly.Msg["CATCOLOUR"] = "COLOUR";
 	
-	Blockly.Themes.Zelos.categoryStyles['element_category'] = {colour: '#dddddd'};	
+	Blockly.Themes.Zelos.categoryStyles['element_category'] = {colour: '#dddddd'};
+
+	Blockly.Flyout.prototype.getDynamicCategoryContents = function(a){
+		//this.workspace_.targetWorkspace.toolboxCategoryCallbacks.set('xxxxx_NAME_TYPE' ,Blockly.xxxxx.flyoutCategory);		//If you have implemented a custom toolbox category
+
+		a=this.workspace_.targetWorkspace.getToolboxCategoryCallback(a);
+		if("function"!==typeof a) {
+			throw TypeError("Couldn't find a callback function when opening a toolbox category.");
+			return null;
+		} else
+			return a(this.workspace_.targetWorkspace)
+	}	
 	
 	let demoWorkspace = Blockly.inject('blocklyDiv',{
 							renderer: 'zelos'
@@ -339,32 +350,18 @@
 							}
 						});
 						
-						
-	Blockly.Flyout.prototype.getDynamicCategoryContents = function(a){
-		//this.workspace_.targetWorkspace.toolboxCategoryCallbacks.set('xxxxx_NAME_TYPE' ,Blockly.xxxxx.flyoutCategory);		//If you have implemented a custom toolbox category
-
-		a=this.workspace_.targetWorkspace.getToolboxCategoryCallback(a);
-		if("function"!==typeof a) {
-			throw TypeError("Couldn't find a callback function when opening a toolbox category.");
-			return null;
-		} else
-			return a(this.workspace_.targetWorkspace)
-	}						
-	
 	function workspaceResize() {
-		if (document.documentElement.clientWidth)
-			var workspaceWidth = document.documentElement.clientWidth;
-		else
-			var workspaceWidth = document.body.clientWidth;
-		if (document.documentElement.clientHeight)
-			var workspaceHeight = document.documentElement.clientHeight-1;
-		else
-			var workspaceHeight = document.body.clientHeight-1;
-		document.getElementById('blocklyDiv').style.width = workspaceWidth +"px";
-		document.getElementById('blocklyDiv').style.height = workspaceHeight +"px";
+		var workspaceWidth = document.documentElement.clientWidth || document.body.clientWidth;
+		var workspaceHeight = (document.documentElement.clientHeight || document.body.clientHeight) - 1;
+
+		var blocklyDiv = document.getElementById('blocklyDiv');
+		blocklyDiv.style.width = workspaceWidth + "px";
+		blocklyDiv.style.height = workspaceHeight + "px";
+
 		Blockly.svgResize(demoWorkspace);
 	}
 	workspaceResize();
+	window.addEventListener('resize', workspaceResize);
 </script>
 </body>
 
