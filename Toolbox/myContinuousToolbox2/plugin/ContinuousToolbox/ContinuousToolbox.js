@@ -13,6 +13,8 @@ class ContinuousToolbox extends Blockly.Toolbox {
   constructor(workspace) {	  
     super(workspace);
 	
+	this.refreshDebouncer = null;
+	
 	workspace.eventHistory = [];	
 
     workspace.addChangeListener((event) => {
@@ -22,13 +24,22 @@ class ContinuousToolbox extends Blockly.Toolbox {
 		if (continuousFlyout.autoClose) {
 			if (event.type == "toolbox_item_select" && continuousFlyout.visible == false&&event.newItem) {
 				continuousFlyout.setVisible(true);
-				eventWorkspace.resize();
+				continuousFlyout.show(this.getInitialFlyoutContents_());
+				eventWorkspace.eventHistory = [];
 			} else if (event.type == "toolbox_item_select" && (!event.newItem) && continuousFlyout.visible == true) {
 				continuousFlyout.setVisible(false);
-				eventWorkspace.resize();
 				continuousFlyout.getParentToolbox_().clearSelection();
+				eventWorkspace.eventHistory = [];
 			}	
-		}			
+		} else {
+			if (
+				event.type === Blockly.Events.BLOCK_CREATE ||
+				event.type === Blockly.Events.BLOCK_DELETE ||
+				event.type === Blockly.Events.BLOCK_CHANGE
+			) {
+				continuousFlyout.getParentToolbox_().refreshSelection();
+			}	
+		}
     });
 	
   }
@@ -46,12 +57,6 @@ class ContinuousToolbox extends Blockly.Toolbox {
 		flyout.setVisible(false);
 	
 	this.workspace_.eventHistory = [];	
-
-    this.workspace_.addChangeListener((event) => {
-		if (event.type === Blockly.Events.BLOCK_CREATE||event.type === Blockly.Events.BLOCK_DELETE||event.type === Blockly.Events.BLOCK_CHANGE||event.type === Blockly.Events.VAR_CREATE||event.type === Blockly.Events.VAR_RENAME||event.type === Blockly.Events.VAR_DELETE) {
-			this.refreshSelection();
-		}  
-    });
   }
 
   /** @override */
@@ -100,7 +105,7 @@ class ContinuousToolbox extends Blockly.Toolbox {
 		clearTimeout(this.refreshDebouncer);
 	  }
 	  this.refreshDebouncer = setTimeout(() => {
-		this.getFlyout().show(this.getInitialFlyoutContents_());
+			this.getFlyout().show(this.getInitialFlyoutContents_());
 	  }, 100);
   }
 

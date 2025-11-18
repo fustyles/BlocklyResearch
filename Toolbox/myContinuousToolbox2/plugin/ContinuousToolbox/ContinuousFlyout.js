@@ -262,7 +262,7 @@ class ContinuousFlyout extends Blockly.VerticalFlyout {
 	var workspace = this.targetWorkspace;
 	
 	if (workspace.eventHistory) {
-		if (workspace.eventHistory.length==0&&this.visible == false)
+		if (workspace.eventHistory.length==0&&this.isVisible() == false)
 			shouldShowFlyout = false;
 		else {
 			for (let i = workspace.eventHistory.length - 1; i >= 0; i--) {
@@ -270,7 +270,7 @@ class ContinuousFlyout extends Blockly.VerticalFlyout {
 				var eventType = event[0];
 				var eventOldJsonType = (event[1] !== null)?event[1].type:"";
 				var eventBlockId = (event[2] !== null)?event[2]:"";
-				if (eventType=="selected"||eventType=="block_field_intermediate_change"||(eventType=="var_create"&&this.visible == false)||eventType=="var_rename"||eventType=="var_delete"||(eventType=="create"&&eventBlockId)) {
+				if ((((eventType=="selected")&&!this.isVisible())||eventType=="block_field_intermediate_change"||eventType=="var_create"||eventType=="var_rename"||eventType=="var_delete"||(eventType=="create"&&eventBlockId))&&this.autoClose) {
 					shouldShowFlyout = false;
 					break;
 				}
@@ -278,16 +278,18 @@ class ContinuousFlyout extends Blockly.VerticalFlyout {
 		}
 	}
 
+	
 	super.show(flyoutDef);
 	this.recordScrollPositions();
 	workspace.resizeContents();
-	
-	if (!shouldShowFlyout&&this.visible == true&&this.autoClose) {
+	workspace.resize();
+
+	if (!shouldShowFlyout&&this.isVisible() == true&&this.autoClose) {
 		this.setVisible(false);
 		this.getParentToolbox_().clearSelection();
-	} else {
-		this.getParentToolbox_().refreshSelection();
 	}
+	
+	workspace.eventHistory = [];
   }
 
   /**
@@ -297,7 +299,7 @@ class ContinuousFlyout extends Blockly.VerticalFlyout {
    * @return {boolean} True if the block can be recycled.
    * @protected
    */
-  blockIsRecyclable_(block) {	  
+  blockIsRecyclable_(block) {
     if (!this.recyclingEnabled_) {
       return false;
     }
@@ -352,5 +354,5 @@ class ContinuousFlyout extends Blockly.VerticalFlyout {
    */
   setRecyclingEnabled(isEnabled) {	  
     this.recyclingEnabled_ = isEnabled;
-  }
+  }  
 }
