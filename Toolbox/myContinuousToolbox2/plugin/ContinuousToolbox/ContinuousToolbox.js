@@ -106,7 +106,7 @@ class ContinuousToolbox extends Blockly.Toolbox {
 	  }
 	  this.refreshDebouncer = setTimeout(() => {
 			this.getFlyout().show(this.getInitialFlyoutContents_());
-	  }, 100);
+	  }, 10);
   }
 
   /** @override */
