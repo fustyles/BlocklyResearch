@@ -189,7 +189,7 @@ class ContinuousFlyout extends Blockly.VerticalFlyout {
 
   /**
    * Overrides the position function solely to change the x coord in RTL mode.
-   * The base function allows the workspace to go "under" the flyout, so
+   * The base function alloworkspace the workspace to go "under" the flyout, so
    * to calculate the left edge of the flyout in RTL you would just subtract
    * the flyout width from the total viewWidth to get x. However, in our
    * flyout, the workspace already starts at the left edge of the flyout, so
@@ -259,17 +259,14 @@ class ContinuousFlyout extends Blockly.VerticalFlyout {
    */
   show(flyoutDef) {
 	var shouldShowFlyout = true;
-	var ws = this.targetWorkspace;
+	var workspace = this.targetWorkspace;
 	
-	//console.log(ws.eventHistory);	
-	//console.log(this);
-	
-	if (ws.eventHistory) {
-		if (ws.eventHistory.length==0&&this.visible == false)
+	if (workspace.eventHistory) {
+		if (workspace.eventHistory.length==0&&this.visible == false)
 			shouldShowFlyout = false;
 		else {
-			for (let i = ws.eventHistory.length - 1; i >= 0; i--) {
-				const event = ws.eventHistory[i];
+			for (let i = workspace.eventHistory.length - 1; i >= 0; i--) {
+				const event = workspace.eventHistory[i];
 				var eventType = event[0];
 				var eventOldJsonType = (event[1] !== null)?event[1].type:"";
 				var eventBlockId = (event[2] !== null)?event[2]:"";
@@ -280,26 +277,22 @@ class ContinuousFlyout extends Blockly.VerticalFlyout {
 			}
 		}
 	}
-	
-	let flyoutDef_ = [];
-	for (let i=0;i<flyoutDef.length;i++) {
-		if (flyoutDef[i])
-			flyoutDef_.push(flyoutDef[i]);
-	}
-	
-	super.show(flyoutDef_);
+
+	super.show(flyoutDef);
 	this.recordScrollPositions();
+	workspace.resizeContents();
 	
 	if (!shouldShowFlyout&&this.visible == true&&this.autoClose) {
 		this.setVisible(false);
-		ws.resize();
 		this.getParentToolbox_().clearSelection();
+	} else {
+		this.getParentToolbox_().refreshSelection();
 	}
   }
 
   /**
    * Determine if this block can be recycled in the flyout.  Blocks that have no
-   * variables and are not dynamic shadows can be recycled.
+   * variables and are not dynamic shadoworkspace can be recycled.
    * @param {!Blockly.BlockSvg} block The block to attempt to recycle.
    * @return {boolean} True if the block can be recycled.
    * @protected

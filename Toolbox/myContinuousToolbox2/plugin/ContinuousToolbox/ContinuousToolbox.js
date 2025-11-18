@@ -48,7 +48,7 @@ class ContinuousToolbox extends Blockly.Toolbox {
 	this.workspace_.eventHistory = [];	
 
     this.workspace_.addChangeListener((event) => {
-		if (event.type === Blockly.Events.BLOCK_CREATE||event.type === Blockly.Events.BLOCK_DELETE||event.type === Blockly.Events.BLOCK_CHANGE||event.type === Blockly.Events.VAR_CREATE) {
+		if (event.type === Blockly.Events.BLOCK_CREATE||event.type === Blockly.Events.BLOCK_DELETE||event.type === Blockly.Events.BLOCK_CHANGE||event.type === Blockly.Events.VAR_CREATE||event.type === Blockly.Events.VAR_RENAME||event.type === Blockly.Events.VAR_DELETE) {
 			this.refreshSelection();
 		}  
     });
@@ -96,14 +96,12 @@ class ContinuousToolbox extends Blockly.Toolbox {
 
   /** @override */
   refreshSelection() {
-    if (this.getFlyout().isVisible()) {
-      if (this.refreshDebouncer) {
-        clearTimeout(this.refreshDebouncer);
-      }
-      this.refreshDebouncer = setTimeout(() => {
-        this.getFlyout().show(this.getInitialFlyoutContents_());
-      }, 100);
-    }
+	  if (this.refreshDebouncer) {
+		clearTimeout(this.refreshDebouncer);
+	  }
+	  this.refreshDebouncer = setTimeout(() => {
+		this.getFlyout().show(this.getInitialFlyoutContents_());
+	  }, 100);
   }
 
   /** @override */
