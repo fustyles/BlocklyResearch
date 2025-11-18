@@ -314,6 +314,8 @@
 	Blockly.Msg["CATLISTS"] = "LISTS";
 	Blockly.Msg["CATCOLOUR"] = "COLOUR";
 	
+	Blockly.Themes.Zelos.categoryStyles['element_category'] = {colour: '#dddddd'};	
+	
 	let demoWorkspace = Blockly.inject('blocklyDiv',{
 							renderer: 'zelos'
 							,theme: 'zelos'				
@@ -336,6 +338,7 @@
 							  'metricsManager': ContinuousMetrics,
 							}
 						});
+						
 						
 	Blockly.Flyout.prototype.getDynamicCategoryContents = function(a){
 		//this.workspace_.targetWorkspace.toolboxCategoryCallbacks.set('xxxxx_NAME_TYPE' ,Blockly.xxxxx.flyoutCategory);		//If you have implemented a custom toolbox category
